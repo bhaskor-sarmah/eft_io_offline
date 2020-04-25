@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="439.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.NewSuspectController">
+   <stylesheets>
+      <URL value="@/offlineio/style/newsuspect.css" />
+   </stylesheets>
+   <children>
+      <AnchorPane layoutY="65.0" prefHeight="519.0" prefWidth="439.0" style="-fx-background-color: #E9E9E9;">
+         <children>
+            <AnchorPane layoutY="-2.0" prefHeight="43.0" prefWidth="439.0" style="-fx-background-color: #000000;">
+               <children>
+                  <Label layoutX="15.0" layoutY="13.0" text="Temp ID :" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTempId" layoutX="82.0" layoutY="13.0" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label layoutX="24.0" layoutY="57.0" text="You are modifying data of : ">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSuspectName" layoutX="196.0" layoutY="57.0" textFill="#3364ff">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button layoutX="55.0" layoutY="96.0" mnemonicParsing="false" onMouseClicked="#onSuspectBasicDetailsClick" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Suspect Basic Details">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon_notdone/icons_person.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="55.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#onSuspectAddressDetailsClick" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Suspect Address Details">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="55.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#onSuspectFamilyMemberClick" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Suspect Family Member (If Any)">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="55.0" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#onSuspectBiometricDetailsClick" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Photo &amp; Biometric">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="55.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#onSuspectDocumentUploadClick" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Evidence &amp; Document Upload">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="55.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#onSuspectGPSDetailsClicked" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Suspect Detenction GPS Cordinate">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon_notdone/icons_home_address.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon_notdone/icons_family.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon_notdone/icons_fingerprint.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon_notdone/icons_upload_document.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon_done/icons_user_location.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="55.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#onPreviewClick" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Preview &amp; Submit">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icon_notdone/icons_preview.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="46.0" layoutY="19.0" text="Register New Suspect" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="52.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0" onMouseClicked="#onBackClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/less_than.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="346.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#onLogoutClick" style="-fx-background-color: #ffffff;" text="Logout">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

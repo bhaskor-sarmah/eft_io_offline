@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="665.0" prefWidth="751.0" style="-fx-background-color: #C3C3C3;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.HomeController">
+    <stylesheets>
+        <URL value="@/offlineio/style/home.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutY="145.0" prefHeight="390.0" prefWidth="230.0" style="-fx-background-color: #D7D7D7;">
+         <children>
+            <VBox layoutY="-12.0" prefHeight="531.0" prefWidth="230.0">
+               <children>
+                  <AnchorPane onMouseClicked="#onHomeClick" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onHomeClick" text="Home" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="11.0" layoutY="5.0" onMouseClicked="#onHomeClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/fa_home_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#onAddSuspect" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onAddSuspect" text="New Suspect Register" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="11.0" layoutY="5.0" onMouseClicked="#onAddSuspect" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/fa_id_card_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#onClickPartialForm" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onClickPartialForm" text="Partially Completed Form" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="14.0" layoutY="2.0" onMouseClicked="#onClickPartialForm" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/form_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#onClickCompletedForm" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onClickCompletedForm" text="Completed Form" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="12.0" layoutY="5.0" onMouseClicked="#onClickCompletedForm" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/fa_check_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#onClickFurtherInvestigation" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onClickFurtherInvestigation" text="Further Investigation" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="11.0" layoutY="1.0" onMouseClicked="#onClickFurtherInvestigation" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/fa_bell_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#onClickSuspectSync" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onClickSuspectSync" text="Suspect Data Sync" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="11.0" layoutY="3.0" onMouseClicked="#onClickSuspectSync" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/fa_upload_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#onClickMasterDataSync" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onClickMasterDataSync" text="Master Data Sync" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="26.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="10.0" layoutY="3.0" onMouseClicked="#onClickMasterDataSync" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/fa_download_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane onMouseClicked="#onClickPasswordChange" prefHeight="37.0" prefWidth="169.0" style="-fx-background-color: #ffffff; -fx-border-color: #A6A6A6;">
+                     <children>
+                        <Hyperlink layoutX="60.0" layoutY="7.0" onMouseClicked="#onClickPasswordChange" text="Password Change" textFill="#000f59">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="18.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="10.0" layoutY="3.0" onMouseClicked="#onClickPasswordChange" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/fa_refresh_dark_blue.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="53.0" prefWidth="751.0" style="-fx-background-color: #3364FF;">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="82.0" layoutX="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/eft_logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="308.0" layoutY="30.0" text="eFT Desktop Application" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="682.0" layoutY="50.0" text="Version 1.0" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="76.0" prefHeight="59.0" prefWidth="751.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label fx:id="lblScopeCode" layoutX="46.0" layoutY="10.0" text="18322151" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblScopeText" layoutX="46.0" layoutY="30.0" prefWidth="168.0" text="BHARALUMUKH" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUserName" layoutX="640.0" layoutY="19.0" text="BHASKOR" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="23.0" layoutX="713.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/fa_user_white.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="266.0" layoutY="143.0" prefHeight="164.0" prefWidth="461.0" style="-fx-background-radius: 8 8 8 8; -fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="14.0" layoutY="1.0" text="Suspect Management" textFill="#0094db">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="28.0" layoutY="28.0" onMouseClicked="#onAddSuspect" prefHeight="104.0" prefWidth="104.0" style="-fx-background-radius: 55 55 55 55; -fx-background-color: #E9E9E9;">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="65.0" layoutX="26.0" layoutY="25.0" onMouseClicked="#onAddSuspect" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/fa_add_user_blue.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="29.0" layoutY="132.0" prefHeight="47.0" prefWidth="114.0" text="New Suspect Registration" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="185.0" layoutY="28.0" onMouseClicked="#onClickPartialForm" prefHeight="104.0" prefWidth="104.0" style="-fx-background-radius: 55 55 55 55; -fx-background-color: #E9E9E9;">
+               <children>
+                  <ImageView fitHeight="59.0" fitWidth="65.0" layoutX="28.0" layoutY="23.0" onMouseClicked="#onClickPartialForm" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/form_blue.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="191.0" layoutY="132.0" prefHeight="47.0" prefWidth="104.0" text="Partially Completed Form" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="330.0" layoutY="28.0" onMouseClicked="#onClickCompletedForm" prefHeight="104.0" prefWidth="104.0" style="-fx-background-radius: 55 55 55 55; -fx-background-color: #E9E9E9;">
+               <children>
+                  <ImageView fitHeight="59.0" fitWidth="65.0" layoutX="27.0" layoutY="24.0" onMouseClicked="#onClickCompletedForm" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/form_blue.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="331.0" layoutY="132.0" prefHeight="47.0" prefWidth="114.0" text="Completed Form" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="266.0" layoutY="329.0" prefHeight="154.0" prefWidth="461.0" style="-fx-background-radius: 8 8 8 8; -fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="14.0" layoutY="1.0" text="Further Investigation" textFill="#0094db">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="186.0" layoutY="22.0" onMouseClicked="#onClickFurtherInvestigation" prefHeight="104.0" prefWidth="104.0" style="-fx-background-radius: 55 55 55 55; -fx-background-color: #E9E9E9;">
+               <children>
+                  <ImageView fitHeight="59.0" fitWidth="65.0" layoutX="23.0" layoutY="23.0" onMouseClicked="#onClickFurtherInvestigation" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons_further_investigation.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Label layoutX="158.0" layoutY="126.0" prefHeight="24.0" prefWidth="183.0" text="Further Investigation Request" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="266.0" layoutY="490.0" prefHeight="167.0" prefWidth="461.0" style="-fx-background-radius: 8 8 8 8; -fx-background-color: #FFFFFF;">
+         <children>
+            <Label layoutX="14.0" layoutY="1.0" text="Data Status" textFill="#0094db">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="179.0" layoutY="15.0" prefHeight="76.0" prefWidth="82.0" style="-fx-background-radius: 55 55 55 55; -fx-background-color: #E9E9E9;">
+               <children>
+                  <Label fx:id="lblSyncCountBig" layoutX="32.0" layoutY="15.0" prefHeight="47.0" prefWidth="31.0" text="0" textAlignment="CENTER" textFill="RED" wrapText="true">
+                     <font>
+                        <Font name="Arial Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label fx:id="lblSyncCount" layoutX="112.0" layoutY="80.0" prefHeight="47.0" prefWidth="252.0" text="You have 0 offline data on local storage" textAlignment="CENTER" textFill="RED" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="161.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#onClickSuspectSync" prefHeight="37.0" prefWidth="119.0" style="-fx-background-color: #3364FF;" text="Click To Sync" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

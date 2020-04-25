@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="568.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="offlineio.controller.ViewMasterController">
+    <stylesheets>
+        <URL value="@/offlineio/style/viewmaster.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="87.0" prefHeight="523.0" prefWidth="576.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <TableView fx:id="tableView" layoutY="23.0" prefHeight="505.0" prefWidth="576.0">
+              <columns>
+                <TableColumn fx:id="colSlNo" prefWidth="75.0" text="Sl. No" />
+                <TableColumn fx:id="colTblName" prefWidth="150.0" text="Table Name" />
+                  <TableColumn fx:id="colCurrStatus" minWidth="0.0" prefWidth="109.0" text="Current Status" />
+                  <TableColumn fx:id="colDeviceVersion" prefWidth="117.0" text="Device Version" />
+                  <TableColumn fx:id="colServerVersion" prefWidth="123.0" text="Server Version" />
+              </columns>
+            </TableView>
+            <Label fx:id="lblMessage" layoutX="7.0" layoutY="4.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="74.0" fitWidth="40.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#onClickBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/less_than.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="69.0" layoutY="33.0" text="Master Data Status" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="473.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#onClickLogout" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #ffffff;" text="Logout">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
