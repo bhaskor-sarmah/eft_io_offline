@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="439.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.NewSuspectController">
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="439.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.ModifySuspectDataController">
    <stylesheets>
       <URL value="@/offlineio/style/newsuspect.css" />
    </stylesheets>
@@ -44,7 +44,7 @@
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgBasicDetails" fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="103.0" onMouseClicked="#onSuspectBasicDetailsClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon_notdone/icons_person.png" />
                </image>
@@ -74,29 +74,29 @@
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgAddressDetails" fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="161.0" onMouseClicked="#onSuspectAddressDetailsClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon_notdone/icons_home_address.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgFamilyDetails" fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="219.0" onMouseClicked="#onSuspectFamilyMemberClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon_notdone/icons_family.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgBiometricDetails" fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="278.0" onMouseClicked="#onSuspectBiometricDetailsClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon_notdone/icons_fingerprint.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgDocumentDetails" fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="341.0" onMouseClicked="#onSuspectDocumentUploadClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon_notdone/icons_upload_document.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgLocationDetails" fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="400.0" onMouseClicked="#onSuspectGPSDetailsClicked" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/icon_done/icons_user_location.png" />
+                  <Image url="@../resources/icon_notdone/icons_user_location.png" />
                </image>
             </ImageView>
             <Button layoutX="55.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#onPreviewClick" prefHeight="43.0" prefWidth="330.0" style="-fx-background-color: #FFFFFF;" text="Preview &amp; Submit">
@@ -104,7 +104,7 @@
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="70.0" layoutY="457.0" onMouseClicked="#onPreviewClick" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icon_notdone/icons_preview.png" />
                </image>

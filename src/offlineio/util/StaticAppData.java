@@ -12,14 +12,17 @@ import offlineio.payload.response.JwtAuthResponse;
  * @author Bhaskor
  */
 public class StaticAppData {
+
     private static JwtAuthResponse authResponse;
     private static String message;
     private static String color;
     private static String pinUser;
     private static String pinUserId;
+    private static String pinThanaCode;
     private static String loggedInUser;
     private static String loggedInUserId;
     private static String nextWindow;
+    private static String modifySuspectId;
 
     public static String getMessage() {
         return message;
@@ -28,7 +31,7 @@ public class StaticAppData {
     public static void setMessage(String message) {
         StaticAppData.message = message;
     }
-    
+
     public static JwtAuthResponse getAuthResponse() {
         return authResponse;
     }
@@ -88,4 +91,21 @@ public class StaticAppData {
         StaticAppData.nextWindow = nextWindow;
     }
 
+    public static String getPinThanaCode() {
+        return pinThanaCode;
+    }
+
+    public static void setPinThanaCode(String pinThanaCode) {
+        StaticAppData.pinThanaCode = pinThanaCode;
+    }
+
+    public static String getModifySuspectId() {
+        return modifySuspectId;
+    }
+
+    public static void setModifySuspectId(String modifySuspectId) {
+        StaticAppData.modifySuspectId = modifySuspectId;
+    }
+
+    
 }

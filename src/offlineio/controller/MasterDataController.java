@@ -64,9 +64,14 @@ public class MasterDataController implements Initializable {
 
     @FXML
     private void onChangePwdClick(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setScene(new Scene(screenController.activate("resetPassword")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setScene(new Scene(screenController.activate("resetPassword")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
@@ -366,11 +371,12 @@ public class MasterDataController implements Initializable {
             ScreenController screenController = new ScreenController();
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(new Scene(screenController.activate("masterVersion")));
+            primaryStage.centerOnScreen();
         } catch (Exception e) {
 //            lblProgress.setTextFill(Color.web("#FE0000"));
             progressTxt.setText("Some Error has Ocurred !\n");
             System.out.println("Exception : " + e.getMessage());
-        }  
+        }
     }
 
     @FXML
@@ -405,6 +411,7 @@ public class MasterDataController implements Initializable {
             ScreenController screenController = new ScreenController();
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
         } catch (Exception e) {
 //            lblProgress.setTextFill(Color.web("#FE0000"));
             progressTxt.setText("Some Error has Ocurred !\n");
@@ -419,6 +426,7 @@ public class MasterDataController implements Initializable {
             ScreenController screenController = new ScreenController();
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
         } catch (Exception e) {
 //            lblProgress.setTextFill(Color.web("#FE0000"));
             progressTxt.setText("Some Error has Ocurred !\n");

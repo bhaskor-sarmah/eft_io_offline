@@ -7,13 +7,13 @@ package offlineio.controller;
 
 import java.net.URL;
 import java.util.Collections;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -59,6 +59,11 @@ public class PasscodeController implements Initializable {
     private String focus = "";
     @FXML
     private Label lblError;
+
+    private Date deleteDate;
+    private Date enterDate;
+
+    private int i = 0;
 
 //    private static String jwt;
 //
@@ -226,9 +231,14 @@ public class PasscodeController implements Initializable {
 
     @FXML
     private void onClickLogin(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setScene(new Scene(screenController.activate("login")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
@@ -514,6 +524,7 @@ public class PasscodeController implements Initializable {
 
     @FXML
     private void onClickBtnTick(MouseEvent event) {
+        System.out.println("Enter Tick");
         boolean res = true;
 
         ObservableList<String> styleClass1 = txtBox1.getStyleClass();
@@ -567,6 +578,7 @@ public class PasscodeController implements Initializable {
                 ScreenController screenController = new ScreenController();
                 Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 primaryStage.setScene(new Scene(screenController.activate(StaticAppData.getNextWindow())));
+                primaryStage.centerOnScreen();
             } else {
                 txtBox1.setText("");
                 txtBox2.setText("");
@@ -585,6 +597,9 @@ public class PasscodeController implements Initializable {
 
     @FXML
     private void onClickBtnCross(MouseEvent event) {
+//        Date dt = new Date();
+//        if (deleteDate == null) {
+//            System.out.println("Enter Delete");
         if (!txtBox5.getText().equals("")) {
             txtBox5.setText("");
             txtBox4.requestFocus();
@@ -601,12 +616,38 @@ public class PasscodeController implements Initializable {
             txtBox1.setText("");
             txtBox1.requestFocus();
         }
+//            deleteDate = dt;
+//        } else if (dt.getTime() - deleteDate.getTime() > 100) {
+//            deleteDate = dt;
+//            System.out.println(dt.getTime() - deleteDate.getTime());
+//            System.out.println("Enter Delete");
+//            if (!txtBox5.getText().equals("")) {
+//                txtBox5.setText("");
+//                txtBox4.requestFocus();
+//            } else if (!txtBox4.getText().equals("")) {
+//                txtBox4.setText("");
+//                txtBox3.requestFocus();
+//            } else if (!txtBox3.getText().equals("")) {
+//                txtBox3.setText("");
+//                txtBox2.requestFocus();
+//            } else if (!txtBox2.getText().equals("")) {
+//                txtBox2.setText("");
+//                txtBox1.requestFocus();
+//            } else if (!txtBox1.getText().equals("")) {
+//                txtBox1.setText("");
+//                txtBox1.requestFocus();
+//            }
+//        }
     }
 
     @FXML
     private void doKeyReleaseAll(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             Event.fireEvent(btnTick, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
+                    0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
+                    true, true, true, true, true, true, null));
+        } else if (event.getCode() == KeyCode.BACK_SPACE) {
+            Event.fireEvent(btnCross, new MouseEvent(MouseEvent.MOUSE_CLICKED, 0,
                     0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true,
                     true, true, true, true, true, true, null));
         }

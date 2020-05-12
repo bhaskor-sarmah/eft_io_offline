@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="697.0" prefWidth="1055.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.NewSuspectController">
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="697.0" prefWidth="1055.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.SuspectBasicDetailsController">
    <stylesheets>
       <URL value="@/offlineio/style/newsuspect.css" />
    </stylesheets>
@@ -71,7 +71,7 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="432.0" layoutY="57.0" prefHeight="25.0" prefWidth="71.0" text="Gender *" textFill="#e40000">
+                        <Label layoutX="431.0" layoutY="54.0" prefHeight="25.0" prefWidth="71.0" text="Gender *" textFill="#e40000">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
@@ -91,7 +91,7 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="394.0" layoutY="156.0" prefHeight="25.0" prefWidth="96.0" text="Marital Status *" textFill="#e40000">
+                        <Label layoutX="393.0" layoutY="132.0" prefHeight="25.0" prefWidth="96.0" text="Marital Status *" textFill="#e40000">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
@@ -101,7 +101,7 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="420.0" layoutY="349.0" prefHeight="25.0" prefWidth="86.0" text="Date of Birth" textFill="#2908ab">
+                        <Label layoutX="410.0" layoutY="304.0" prefHeight="25.0" prefWidth="86.0" text="Date of Birth" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
@@ -121,7 +121,7 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="704.0" layoutY="307.0" prefHeight="25.0" prefWidth="104.0" text="Passport Country" textFill="#2908ab">
+                        <Label layoutX="691.0" layoutY="307.0" prefHeight="25.0" prefWidth="117.0" text="Passport Country *" textFill="#e40000">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
@@ -137,28 +137,28 @@
                         <TextField fx:id="txtNickName" layoutX="172.0" layoutY="205.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtFatherName" layoutX="172.0" layoutY="255.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtMotherName" layoutX="172.0" layoutY="304.0" prefHeight="25.0" prefWidth="184.0" />
-                        <ChoiceBox fx:id="selBoxVillage" disable="true" layoutX="172.0" layoutY="349.0" prefHeight="25.0" prefWidth="184.0" />
-                        <RadioButton fx:id="rbMale" layoutX="507.0" layoutY="60.0" mnemonicParsing="false" selected="true" text="Male" />
-                        <RadioButton fx:id="rbFemale" layoutX="507.0" layoutY="85.0" mnemonicParsing="false" text="Female" />
-                        <RadioButton fx:id="rbOther" layoutX="507.0" layoutY="111.0" mnemonicParsing="false" text="Other" />
-                        <RadioButton fx:id="rbNeverMarried" layoutX="507.0" layoutY="161.0" mnemonicParsing="false" selected="true" text="Never Married" />
-                        <RadioButton fx:id="rbCurrentlyMarried" layoutX="507.0" layoutY="186.0" mnemonicParsing="false" text="Currently Married" />
-                        <RadioButton fx:id="rbWidow" layoutX="507.0" layoutY="212.0" mnemonicParsing="false" text="Widow / Widower" />
-                        <RadioButton fx:id="rbDivorced" layoutX="508.0" layoutY="238.0" mnemonicParsing="false" text="Divorced" />
-                        <RadioButton fx:id="rbSeparated" layoutX="508.0" layoutY="264.0" mnemonicParsing="false" text="Seperated" />
-                        <CheckBox fx:id="chkBoxHaveDob" layoutX="493.0" layoutY="311.0" mnemonicParsing="false" text="Have Date of Birth">
+                        <ChoiceBox fx:id="selBoxVillage" layoutX="172.0" layoutY="349.0" prefHeight="25.0" prefWidth="184.0" />
+                        <RadioButton fx:id="rbMale" layoutX="506.0" layoutY="57.0" mnemonicParsing="false" selected="true" text="Male" />
+                        <RadioButton fx:id="rbFemale" layoutX="506.0" layoutY="82.0" mnemonicParsing="false" text="Female" />
+                        <RadioButton fx:id="rbOther" layoutX="506.0" layoutY="108.0" mnemonicParsing="false" text="Other" />
+                        <RadioButton fx:id="rbNeverMarried" layoutX="506.0" layoutY="137.0" mnemonicParsing="false" selected="true" text="Never Married" />
+                        <RadioButton fx:id="rbCurrentlyMarried" layoutX="506.0" layoutY="162.0" mnemonicParsing="false" text="Currently Married" />
+                        <RadioButton fx:id="rbWidow" layoutX="506.0" layoutY="188.0" mnemonicParsing="false" text="Widow / Widower" />
+                        <RadioButton fx:id="rbDivorced" layoutX="507.0" layoutY="214.0" mnemonicParsing="false" text="Divorced" />
+                        <RadioButton fx:id="rbSeparated" layoutX="507.0" layoutY="240.0" mnemonicParsing="false" text="Seperated" />
+                        <CheckBox fx:id="chkBoxHaveDob" layoutX="495.0" layoutY="271.0" mnemonicParsing="false" onMouseClicked="#onDobCheckBoxClick" text="Have Date of Birth">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </CheckBox>
-                        <DatePicker fx:id="txtDob" disable="true" layoutX="506.0" layoutY="349.0" prefHeight="25.0" prefWidth="184.0" />
+                        <DatePicker fx:id="txtDob" disable="true" layoutX="496.0" layoutY="304.0" prefHeight="25.0" prefWidth="171.0" />
+                        <TextField fx:id="txtAge" layoutX="497.0" layoutY="344.0" prefHeight="25.0" prefWidth="171.0" />
                         <TextField fx:id="txtPob" layoutX="812.0" layoutY="60.0" prefHeight="25.0" prefWidth="184.0" />
                         <ChoiceBox fx:id="selBoxOccupation" layoutX="812.0" layoutY="107.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtEmail" layoutX="813.0" layoutY="156.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtMobile" layoutX="814.0" layoutY="205.0" prefHeight="25.0" prefWidth="184.0" />
-                        <RadioButton fx:id="rbPassportYes" layoutX="812.0" layoutY="254.0" mnemonicParsing="false" text="Yes" />
-                        <RadioButton fx:id="rbPassportNo" layoutX="812.0" layoutY="279.0" mnemonicParsing="false" selected="true" text="No" />
-                        <TextField fx:id="txtPassportCountry" disable="true" layoutX="817.0" layoutY="307.0" prefHeight="25.0" prefWidth="184.0" />
+                        <RadioButton fx:id="rbPassportYes" layoutX="812.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#onPassportRadioChange" text="Yes" />
+                        <RadioButton fx:id="rbPassportNo" layoutX="812.0" layoutY="279.0" mnemonicParsing="false" onMouseClicked="#onPassportRadioChange" selected="true" text="No" />
                         <TextField fx:id="txtPassportDetails" disable="true" layoutX="817.0" layoutY="349.0" prefHeight="25.0" prefWidth="184.0" />
                         <AnchorPane layoutX="3.0" layoutY="3.0" prefHeight="37.0" prefWidth="1012.0" style="-fx-background-color: #595959; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;" AnchorPane.bottomAnchor="345.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                            <children>
@@ -169,6 +169,12 @@
                               </Label>
                            </children>
                         </AnchorPane>
+                        <ChoiceBox fx:id="selPassportCountry" layoutX="815.0" layoutY="307.0" prefHeight="25.0" prefWidth="185.0" />
+                        <Label layoutX="452.0" layoutY="345.0" prefHeight="25.0" prefWidth="29.0" text="Age" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="21.0" layoutY="443.0" prefHeight="356.0" prefWidth="466.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
@@ -251,7 +257,7 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="24.0" layoutY="414.0" prefHeight="25.0" prefWidth="215.0" text="Employment Type" textFill="#2908ab" wrapText="true">
+                        <Label layoutX="24.0" layoutY="414.0" prefHeight="25.0" prefWidth="215.0" text="Employment Type *" textFill="#e40000" wrapText="true">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
@@ -268,15 +274,15 @@
                         </Label>
                         <TextField fx:id="txtSinceWhenInIndia" layoutX="199.0" layoutY="56.0" prefHeight="25.0" prefWidth="184.0" />
                         <ChoiceBox fx:id="selBoxImmigrationRoute" layoutX="199.0" layoutY="106.0" prefHeight="25.0" prefWidth="184.0" />
-                        <RadioButton fx:id="rbIsVoterYes" layoutX="200.0" layoutY="150.0" mnemonicParsing="false" text="Yes" />
-                        <RadioButton fx:id="rbIsVoterNo" layoutX="200.0" layoutY="175.0" mnemonicParsing="false" selected="true" text="No" />
+                        <RadioButton fx:id="rbIsVoterYes" layoutX="200.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#onIsVoterChange" text="Yes" />
+                        <RadioButton fx:id="rbIsVoterNo" layoutX="200.0" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#onIsVoterChange" selected="true" text="No" />
                         <TextField fx:id="txtVoterName" disable="true" layoutX="24.0" layoutY="243.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtVoterEpic" disable="true" layoutX="255.0" layoutY="241.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtVoterPart" disable="true" layoutX="24.0" layoutY="303.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtVoterPartName" disable="true" layoutX="255.0" layoutY="303.0" prefHeight="25.0" prefWidth="184.0" />
-                        <RadioButton fx:id="rbIsEmployeeYes" layoutX="200.0" layoutY="346.0" mnemonicParsing="false" text="Yes" />
-                        <RadioButton fx:id="rbIsEmployeeNo" layoutX="200.0" layoutY="371.0" mnemonicParsing="false" selected="true" text="No" />
-                        <ChoiceBox fx:id="selBoxEmpType" disable="true" layoutX="24.0" layoutY="441.0" prefHeight="25.0" prefWidth="184.0" />
+                        <RadioButton fx:id="rbIsEmployeeYes" layoutX="200.0" layoutY="346.0" mnemonicParsing="false" onMouseClicked="#onIsEmpChange" text="Yes" />
+                        <RadioButton fx:id="rbIsEmployeeNo" layoutX="200.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#onIsEmpChange" selected="true" text="No" />
+                        <ChoiceBox fx:id="selBoxEmpType" layoutX="24.0" layoutY="441.0" prefHeight="25.0" prefWidth="184.0" />
                         <TextField fx:id="txtEmpName" disable="true" layoutX="258.0" layoutY="441.0" prefHeight="25.0" prefWidth="184.0" />
                         <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="37.0" prefWidth="470.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="6.0">
                            <children>
@@ -311,15 +317,15 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <CheckBox layoutX="37.0" layoutY="48.0" mnemonicParsing="false" text="Suspect have own Land/House in India">
+                        <CheckBox fx:id="chkLandHouse" layoutX="37.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#onSuspectOwnLandClick" text="Suspect have own Land/House in India">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </CheckBox>
-                        <TextField fx:id="txtMiddleName13" disable="true" layoutX="172.0" layoutY="106.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtLastName2" disable="true" layoutX="172.0" layoutY="156.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtMiddleName12" disable="true" layoutX="172.0" layoutY="205.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextArea disable="true" layoutX="172.0" layoutY="252.0" prefHeight="75.0" prefWidth="184.0" />
+                        <TextField fx:id="txtLandHouseFromYear" disable="true" layoutX="172.0" layoutY="106.0" prefHeight="25.0" prefWidth="184.0" />
+                        <TextField fx:id="txtDaagNo" disable="true" layoutX="172.0" layoutY="156.0" prefHeight="25.0" prefWidth="184.0" />
+                        <TextField fx:id="txtPattaNo" disable="true" layoutX="172.0" layoutY="205.0" prefHeight="25.0" prefWidth="184.0" />
+                        <TextArea fx:id="txtAreaLandHouseDetails" disable="true" layoutX="172.0" layoutY="252.0" prefHeight="75.0" prefWidth="184.0" />
                         <AnchorPane layoutX="2.0" layoutY="3.0" prefHeight="33.0" prefWidth="466.0" style="-fx-background-color: #595959; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;">
                            <children>
                               <Label alignment="CENTER" layoutX="2.0" layoutY="9.0" prefHeight="20.0" prefWidth="466.0" text="SUSPECT OWN LAND/HOUSE IN INDIA" textAlignment="CENTER" textFill="WHITE">
@@ -343,8 +349,8 @@
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtMiddleName131" layoutX="172.0" layoutY="66.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtLastName21" layoutX="172.0" layoutY="116.0" prefHeight="25.0" prefWidth="184.0" />
+                        <TextField fx:id="txtWitness1" layoutX="172.0" layoutY="66.0" prefHeight="25.0" prefWidth="184.0" />
+                        <TextField fx:id="txtWitness2" layoutX="172.0" layoutY="116.0" prefHeight="25.0" prefWidth="184.0" />
                         <AnchorPane layoutX="2.0" layoutY="3.0" prefHeight="33.0" prefWidth="466.0" style="-fx-background-color: #595959; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;">
                            <children>
                               <Label alignment="CENTER" layoutX="2.0" layoutY="9.0" prefHeight="20.0" prefWidth="466.0" text="WITNESS" textAlignment="CENTER" textFill="WHITE">
@@ -356,12 +362,12 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <Button layoutX="353.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #3AF1CE;" text="Save" textFill="WHITE">
+                  <Button layoutX="353.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #32D2B3;" text="Save" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="530.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveAsDraftClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #3364FF;" text="Save As Draft" textFill="WHITE">
+                  <Button layoutX="530.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveAsDraftClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #3998D5;" text="Save As Draft" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

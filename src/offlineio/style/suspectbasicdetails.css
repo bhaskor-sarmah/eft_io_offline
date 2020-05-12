@@ -5,3 +5,11 @@
 .mainFxmlClass {
 
 }
+
+.error {
+/*    -fx-background-color: #FAA319, #EF4023, -fx-background ;
+    -fx-background-insets: 0, 1, 2 ;*/
+    -fx-text-box-border: red ;
+    -fx-focus-color: red ;
+    -fx-border-width: 3;
+}

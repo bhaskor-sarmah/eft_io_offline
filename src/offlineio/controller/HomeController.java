@@ -44,63 +44,105 @@ public class HomeController implements Initializable {
 
     @FXML
     private void onHomeClick(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setScene(new Scene(screenController.activate("home")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setScene(new Scene(screenController.activate("home")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onAddSuspect(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        StaticAppData.setNextWindow("newSuspect");
-        primaryStage.setScene(new Scene(screenController.activate("passcode")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            StaticAppData.setNextWindow("newSuspect");
+            primaryStage.setScene(new Scene(screenController.activate("passcode")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onClickPartialForm(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        StaticAppData.setNextWindow("patiallyCompleted");
-        primaryStage.setScene(new Scene(screenController.activate("passcode")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            StaticAppData.setNextWindow("patiallyCompleted");
+            primaryStage.setScene(new Scene(screenController.activate("passcode")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onClickCompletedForm(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        StaticAppData.setNextWindow("completedForm");
-        primaryStage.setScene(new Scene(screenController.activate("passcode")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            StaticAppData.setNextWindow("completedForm");
+            primaryStage.setScene(new Scene(screenController.activate("passcode")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onClickFurtherInvestigation(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        StaticAppData.setNextWindow("furtherInvestigation");
-        primaryStage.setScene(new Scene(screenController.activate("login")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            StaticAppData.setNextWindow("furtherInvestigation");
+            primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onClickSuspectSync(MouseEvent event) {
-        ScreenController screenController = new ScreenController();
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        StaticAppData.setNextWindow("suspectSync");
-        primaryStage.setScene(new Scene(screenController.activate("login")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            StaticAppData.setNextWindow("suspectSync");
+            primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onClickMasterDataSync(MouseEvent event) {
-//        ScreenController screenController = new ScreenController();
-//        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        primaryStage.setScene(new Scene(screenController.activate("patiallyCompleted")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            StaticAppData.setNextWindow("masterVersion");
+            primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onClickPasswordChange(MouseEvent event) {
-//        ScreenController screenController = new ScreenController();
-//        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        primaryStage.setScene(new Scene(screenController.activate("patiallyCompleted")));
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            StaticAppData.setNextWindow("resetPassword");
+            primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
 }

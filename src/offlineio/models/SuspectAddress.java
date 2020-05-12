@@ -2,87 +2,6 @@ package  offlineio.models;
 
 public class SuspectAddress {
 
-    public static final String SUSPECT_ADDRESS_TABLE = "trans_suspect_address";
-
-    public static  final  String  COLUMN_FK_SUSPECT_ID  ="fk_suspect_id";
-    public static  final  String  COLUMN_ADDRESS_ID  ="address_id";
-    public static  final  String  COLUMN_CREATED_BY  ="created_by";
-    public static  final  String  COLUMN_UPDATED_BY  ="updated_by";
-    public static  final  String  COLUMN_CAPTURED_AT  ="captured_at";
-    public static  final  String  COLUMN_CAPTURED_BY  ="captured_by";
-    public static  final  String  COLUMN_DEVICE_ID  ="device_id";
-    public static  final  String  COLUMN_HOUSE_NO  ="house_no";
-    public static  final  String  COLUMN_HOUSE_OWNER_NAME  ="house_owner_name";
-    public static  final  String  COLUMN_HOUSE_OWNER_PHONE_NO  ="house_owner_phone_no";
-    public static  final  String  COLUMN_IP_ADDRESS  ="ip_address";
-    public static  final  String  COLUMN_LATITUDE  ="latitude";
-    public static  final  String  COLUMN_LONGITUDE  ="longitude";
-    public static  final  String  COLUMN_OTHER_COUNTRY  ="other_country";
-    public static  final  String  COLUMN_OTHER_DISTRICT  ="other_district";
-    public static  final  String  COLUMN_OTHER_STATE  ="other_state";
-    public static  final  String  COLUMN_OTHER_THANA  ="other_thana";
-    public static  final  String  COLUMN_OTHER_VILLAGE  ="other_village";
-    public static  final  String  COLUMN_PIN_CODE  ="pin_code";
-    public static  final  String  COLUMN_POST_OFFICE  ="post_office";
-    public static  final  String  COLUMN_REVENUE_VILLAGE_NAME  ="revenue_village_name";
-    public static  final  String  COLUMN_VILLAGE_HEAD_NAME  ="village_head_name";
-    public static  final  String  COLUMN_VILLAGE_HEAD_PHONE_NO  ="village_head_phone_no";
-    public static  final  String  COLUMN_FK_ADDRESS_TYPE_CODE  ="fk_address_type_code";
-    public static  final  String  COLUMN_FK_COUNTRY_CODE  ="fk_country_code";
-    public static  final  String  COLUMN_FK_CURRENT_STATUS_CODE  ="fk_current_status_code";
-    public static  final  String  COLUMN_FK_DISTRICT_CODE  ="fk_district_code";
-    public static  final  String  COLUMN_FK_STATE_CODE  ="fk_state_code";
-    public static  final  String  COLUMN_FK_SUSPECT_DISTRICT_CODE  ="fk_suspect_district_code";
-    public static  final  String  COLUMN_FK_SUSPECT_FT_CODE  ="fk_suspect_ft_code";
-    public static  final  String  COLUMN_FK_SUSPECT_STATE_CODE  ="fk_suspect_state_code";
-    public static  final  String  COLUMN_FK_SUSPECT_THANA_CODE  ="fk_suspect_thana_code";
-    public static  final  String  COLUMN_FK_THANA_CODE  ="fk_thana_code";
-    public static  final  String  COLUMN_FK_VILLAGE_CODE  ="fk_village_code";
-    public static final String COLUMN_IS_READY_FOR_SYNC = "is_ready_for_sync";
-    public static final String COLUMN_SYNC_STATUS = "sync_status";
-
-
-    public static final String CREATE_TABLE_ADDRESS=
-            "CREATE TABLE IF NOT EXISTS " + SUSPECT_ADDRESS_TABLE + "("
-
-             + COLUMN_ADDRESS_ID+"  TEXT PRIMARY KEY ,"
-            + COLUMN_FK_SUSPECT_ID+"  TEXT,"
-            + COLUMN_CREATED_BY+"  TEXT,"
-            + COLUMN_UPDATED_BY+"  TEXT,"
-            + COLUMN_CAPTURED_AT+"  TEXT,"
-            + COLUMN_CAPTURED_BY+"  TEXT,"
-            + COLUMN_DEVICE_ID+"  TEXT,"
-            + COLUMN_HOUSE_NO+"  TEXT,"
-            + COLUMN_HOUSE_OWNER_NAME+"  TEXT,"
-            + COLUMN_HOUSE_OWNER_PHONE_NO+"  TEXT,"
-            + COLUMN_IP_ADDRESS+"  TEXT,"
-            + COLUMN_LATITUDE+"  TEXT,"
-            + COLUMN_LONGITUDE+"  TEXT,"
-            + COLUMN_OTHER_COUNTRY+"  TEXT,"
-            + COLUMN_OTHER_DISTRICT+"  TEXT,"
-            + COLUMN_OTHER_STATE+"  TEXT,"
-            + COLUMN_OTHER_THANA+"  TEXT,"
-            + COLUMN_OTHER_VILLAGE+"  TEXT,"
-            + COLUMN_PIN_CODE+"  TEXT,"
-            + COLUMN_POST_OFFICE+"  TEXT,"
-            + COLUMN_REVENUE_VILLAGE_NAME+"  TEXT,"
-            + COLUMN_VILLAGE_HEAD_NAME+"  TEXT,"
-            + COLUMN_VILLAGE_HEAD_PHONE_NO+"  TEXT,"
-            + COLUMN_FK_ADDRESS_TYPE_CODE+"  TEXT,"
-            + COLUMN_FK_COUNTRY_CODE+"  TEXT,"
-            + COLUMN_FK_CURRENT_STATUS_CODE+"  TEXT,"
-            + COLUMN_FK_DISTRICT_CODE+"  TEXT,"
-            + COLUMN_FK_STATE_CODE+"  TEXT,"
-            + COLUMN_FK_SUSPECT_DISTRICT_CODE+"  TEXT,"
-            + COLUMN_FK_SUSPECT_FT_CODE+"  TEXT,"
-            + COLUMN_FK_SUSPECT_STATE_CODE+"  TEXT,"
-            + COLUMN_FK_SUSPECT_THANA_CODE+"  TEXT,"
-            + COLUMN_FK_THANA_CODE+"  TEXT,"
-            + COLUMN_FK_VILLAGE_CODE+"  TEXT,"
-            + COLUMN_IS_READY_FOR_SYNC  +  " TEXT,"
-            + COLUMN_SYNC_STATUS  +  " TEXT"
-            + ")";
-
     public    String  address_id;
     public    String  fk_suspect_id;
     public    String  created_by;
@@ -435,10 +354,6 @@ public class SuspectAddress {
 
     public void setFk_village_code(String fk_village_code) {
         this.fk_village_code = fk_village_code;
-    }
-
-    public static String getSuspectAddressTable() {
-        return SUSPECT_ADDRESS_TABLE;
     }
 
     public String getIs_ready_for_sync() {

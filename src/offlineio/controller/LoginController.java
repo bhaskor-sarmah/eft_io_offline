@@ -110,6 +110,7 @@ public class LoginController implements Initializable {
                                     ScreenController screenController = new ScreenController();
                                     Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                                     primaryStage.setScene(new Scene(screenController.activate(StaticAppData.getNextWindow())));
+                                    primaryStage.centerOnScreen();
                                 }
                             } else {
                                 throw new NullPointerException();

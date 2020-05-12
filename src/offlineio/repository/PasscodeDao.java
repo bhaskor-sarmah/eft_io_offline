@@ -121,12 +121,13 @@ public class PasscodeDao {
         ResultSet rs = null;
         try {
             int index = 1;
-            ps = conn.prepareStatement("SELECT id,user_name FROM pin_master WHERE pin_code = ?");
+            ps = conn.prepareStatement("SELECT id,user_name,ps_code FROM pin_master WHERE pin_code = ?");
             ps.setString(index++, passcode);
             System.out.println(ps);
             rs = ps.executeQuery();
             if (rs.next()) {
                 StaticAppData.setPinUserId(rs.getString("id"));
+                StaticAppData.setPinThanaCode(rs.getString("ps_code"));
                 StaticAppData.setPinUser((rs.getString("user_name") == null) ? "" : rs.getString("user_name").toUpperCase());
                 return true;
             }

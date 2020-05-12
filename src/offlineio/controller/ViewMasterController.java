@@ -68,6 +68,7 @@ public class ViewMasterController implements Initializable {
             ScreenController screenController = new ScreenController();
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(new Scene(screenController.activate("login")));
+            primaryStage.centerOnScreen();
         } catch (Exception e) {
             lblMessage.setText("Some error has ocurred !");
             System.out.println("Exception : " + e.getMessage());
@@ -81,6 +82,7 @@ public class ViewMasterController implements Initializable {
             ScreenController screenController = new ScreenController();
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             primaryStage.setScene(new Scene(screenController.activate("masterData")));
+            primaryStage.centerOnScreen();
         } catch (Exception e) {
             lblMessage.setText("Some error has ocurred !");
             System.out.println("Exception : " + e.getMessage());
