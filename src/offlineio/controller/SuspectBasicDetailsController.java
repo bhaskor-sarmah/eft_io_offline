@@ -6,6 +6,7 @@
 package offlineio.controller;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -269,21 +270,23 @@ public class SuspectBasicDetailsController implements Initializable {
                     if (empKey != null) {
                         selBoxEmpType.getSelectionModel().select(empKey);
                     }
-
-                    selPassportCountry.getItems().add(new KeyValuePair("India", "India"));
-                    selPassportCountry.getItems().add(new KeyValuePair("Bangladesh", "Bangladesh"));
-                    selPassportCountry.getItems().add(new KeyValuePair("Others", "Others"));
+                    KeyValuePair keyIndia = new KeyValuePair("India", "India");
+                    KeyValuePair keyBangla = new KeyValuePair("Bangladesh", "Bangladesh");
+                    KeyValuePair keyOther = new KeyValuePair("Others", "Others");
+                    selPassportCountry.getItems().add(keyIndia);
+                    selPassportCountry.getItems().add(keyBangla);
+                    selPassportCountry.getItems().add(keyOther);
 
                     if (suspect.getForeign_country_name() != null) {
                         switch (suspect.getForeign_country_name()) {
                             case "India":
-                                selPassportCountry.getSelectionModel().select(new KeyValuePair("India", "India"));
+                                selPassportCountry.getSelectionModel().select(keyIndia);
                                 break;
                             case "Bangladesh":
-                                selPassportCountry.getSelectionModel().select(new KeyValuePair("Bangladesh", "Bangladesh"));
+                                selPassportCountry.getSelectionModel().select(keyBangla);
                                 break;
                             case "Others":
-                                selPassportCountry.getSelectionModel().select(new KeyValuePair("Others", "Others"));
+                                selPassportCountry.getSelectionModel().select(keyOther);
                                 break;
                             default:
                                 break;
@@ -482,6 +485,12 @@ public class SuspectBasicDetailsController implements Initializable {
         return localDate;
     }
 
+    public LocalDate REVERSE_LOCAL_DATE(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(dateString, formatter);
+        return localDate;
+    }
+
     public void removeAllErrorClass() {
         txtFirstName.getStyleClass().remove("error");
         txtMiddleName.getStyleClass().remove("error");
@@ -594,9 +603,22 @@ public class SuspectBasicDetailsController implements Initializable {
             }
         }
 
+
+        if (suspect.getAge() != null && !suspect.getAge().equals("")) {
+            txtAge.setText(suspect.getAge());
+        }
+        
         if (suspect.getDate_of_birth() != null && !suspect.getDate_of_birth().equals("")) {
             chkBoxHaveDob.setSelected(true);
-            txtDob.setValue(LOCAL_DATE(suspect.getDate_of_birth()));
+            txtDob.setDisable(false);
+            txtAge.setText("");
+            txtAge.setDisable(true);
+            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-mm-dd");
+            try {
+                txtDob.setValue(REVERSE_LOCAL_DATE(suspect.getDate_of_birth()));
+            } catch (Exception e) {
+                System.out.println("Exception : " + e.getMessage());
+            }
 //            txtDob.setDisable(false);
         }
 
@@ -617,6 +639,8 @@ public class SuspectBasicDetailsController implements Initializable {
             switch (suspect.getHas_foreign_passport()) {
                 case "Y":
                     rbPassportYes.setSelected(true);
+                    selPassportCountry.setDisable(false);
+                    txtPassportDetails.setDisable(false);
                     break;
                 case "N":
                     rbPassportNo.setSelected(true);
@@ -635,15 +659,15 @@ public class SuspectBasicDetailsController implements Initializable {
         }
 
         if (suspect.getHair() != null && !suspect.getHair().equals("")) {
-            txtSuspectEyeColor.setText(suspect.getHeight());
+            txtSuspectHairColor.setText(suspect.getHair());
         }
 
         if (suspect.getEye() != null && !suspect.getEye().equals("")) {
-            txtSuspectEyeColor.setText(suspect.getHeight());
+            txtSuspectEyeColor.setText(suspect.getEye());
         }
 
-        if (suspect.getHair() != null && !suspect.getHair().equals("")) {
-            txtSuspectComplextion.setText(suspect.getHeight());
+        if (suspect.getComplexion() != null && !suspect.getComplexion().equals("")) {
+            txtSuspectComplextion.setText(suspect.getComplexion());
         }
 
         if (suspect.getIdentification_mark() != null && !suspect.getIdentification_mark().equals("")) {
@@ -659,6 +683,10 @@ public class SuspectBasicDetailsController implements Initializable {
             switch (suspect.getIs_voter()) {
                 case "Y":
                     rbIsVoterYes.setSelected(true);
+                    txtVoterName.setDisable(false);
+                    txtVoterEpic.setDisable(false);
+                    txtVoterPart.setDisable(false);
+                    txtVoterPartName.setDisable(false);
                     break;
                 case "N":
                     rbIsVoterNo.setSelected(true);
@@ -689,6 +717,8 @@ public class SuspectBasicDetailsController implements Initializable {
             switch (suspect.getIs_employed()) {
                 case "Y":
                     rbIsEmployeeYes.setSelected(true);
+                    selBoxEmpType.setDisable(false);
+                    txtEmpName.setDisable(false);
                     break;
                 case "N":
                     rbIsEmployeeNo.setSelected(true);
@@ -703,10 +733,14 @@ public class SuspectBasicDetailsController implements Initializable {
         }
 
         if (suspect.getHas_land_house() != null && !suspect.getHas_land_house().equals("")) {
-            if (suspect.getHas_land_house().equals("0")) {
+            if (suspect.getHas_land_house().equals("N")) {
                 chkLandHouse.setSelected(false);
-            } else if (suspect.getHas_land_house().equals("1")) {
+            } else if (suspect.getHas_land_house().equals("Y")) {
                 chkLandHouse.setSelected(true);
+                txtLandHouseFromYear.setDisable(false);
+                txtDaagNo.setDisable(false);
+                txtPattaNo.setDisable(false);
+                txtAreaLandHouseDetails.setDisable(false);
             }
         }
 
@@ -939,13 +973,13 @@ public class SuspectBasicDetailsController implements Initializable {
         suspect.setMobile_no(txtMobile.getText());
 
         if (rbPassportYes.isSelected()) {
-            suspect.setHas_foreign_passport("1");
+            suspect.setHas_foreign_passport("Y");
             if (selPassportCountry.getValue() != null) {
                 suspect.setForeign_country_name(selPassportCountry.getValue().getKey());
             }
             suspect.setForeign_passport_details(txtPassportDetails.getText());
         } else if (rbPassportNo.isSelected()) {
-            suspect.setHas_foreign_passport("0");
+            suspect.setHas_foreign_passport("N");
         }
 
         suspect.setHeight(txtSuspectHeight.getText());
@@ -979,10 +1013,13 @@ public class SuspectBasicDetailsController implements Initializable {
             suspect.setIs_employed("N");
         }
         if (chkLandHouse.isSelected()) {
+            suspect.setHas_land_house("Y");
             suspect.setLand_house_from(txtLandHouseFromYear.getText());
             suspect.setLand_house_dag_no(txtDaagNo.getText());
             suspect.setLand_house_patta_no(txtPattaNo.getText());
             suspect.setLand_house_details(txtAreaLandHouseDetails.getText());
+        } else {
+            suspect.setHas_land_house("N");
         }
         suspect.setWitness1(txtWitness1.getText());
         suspect.setWitness2(txtWitness2.getText());
