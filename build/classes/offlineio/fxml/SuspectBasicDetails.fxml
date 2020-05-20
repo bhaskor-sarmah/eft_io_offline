@@ -362,12 +362,12 @@
                         </AnchorPane>
                      </children>
                   </AnchorPane>
-                  <Button layoutX="353.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #32D2B3;" text="Save" textFill="WHITE">
+                  <Button layoutX="353.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #28A745;" text="Save" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="530.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveAsDraftClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #3998D5;" text="Save As Draft" textFill="WHITE">
+                  <Button layoutX="530.0" layoutY="1187.0" mnemonicParsing="false" onMouseClicked="#onSaveAsDraftClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #007BFF;" text="Save As Draft" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

@@ -78,4 +78,13 @@ public class Validations {
         }
         return checkNumber(str);
     }
+
+    public boolean checkPinCode(String str) {
+        try {
+            int pin = Integer.parseInt(str);
+            return (pin >= 100000 && pin <= 999999);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

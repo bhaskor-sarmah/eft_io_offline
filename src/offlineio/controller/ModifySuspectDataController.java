@@ -94,10 +94,26 @@ public class ModifySuspectDataController implements Initializable {
 
     @FXML
     private void onSuspectAddressDetailsClick(MouseEvent event) {
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) lblTempId.getScene().getWindow();
+            primaryStage.setScene(new Scene(screenController.activate("suspectAddressDetails")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
     private void onSuspectFamilyMemberClick(MouseEvent event) {
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) lblTempId.getScene().getWindow();
+            primaryStage.setScene(new Scene(screenController.activate("suspectAddMember")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML
@@ -106,6 +122,14 @@ public class ModifySuspectDataController implements Initializable {
 
     @FXML
     private void onSuspectDocumentUploadClick(MouseEvent event) {
+        try {
+            ScreenController screenController = new ScreenController();
+            Stage primaryStage = (Stage) lblTempId.getScene().getWindow();
+            primaryStage.setScene(new Scene(screenController.activate("suspectDocument")));
+            primaryStage.centerOnScreen();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
     }
 
     @FXML

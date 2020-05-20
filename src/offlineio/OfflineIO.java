@@ -42,34 +42,36 @@ public class OfflineIO extends Application {
         screenController.addScreen("patiallyCompleted", getClass().getResource("fxml/PartiallyCompletedForm.fxml"));
         screenController.addScreen("passcode", getClass().getResource("fxml/Passcode.fxml"));
         screenController.addScreen("resetPassword", getClass().getResource("fxml/ResetPassword.fxml"));
+        screenController.addScreen("suspectAddMember", getClass().getResource("fxml/SuspectAddMember.fxml"));
         screenController.addScreen("suspectAddressDetails", getClass().getResource("fxml/SuspectAddressDetails.fxml"));
         screenController.addScreen("suspectBasicDetails", getClass().getResource("fxml/SuspectBasicDetails.fxml"));
+        screenController.addScreen("suspectDocument", getClass().getResource("fxml/SuspectDocument.fxml"));
         screenController.addScreen("suspectSync", getClass().getResource("fxml/SuspectSync.fxml"));
         screenController.addScreen("masterVersion", getClass().getResource("fxml/ViewMaster.fxml"));
 
-//        stage.setTitle("Offline IO Application");
-//        stage.setScene(new Scene(screenController.activate("suspectBasicDetails")));
-//        stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
-//        stage.setResizable(false);
-//        stage.show();
+        stage.setTitle("Offline IO Application");
+        stage.setScene(new Scene(screenController.activate("suspectAddMember")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
+        stage.setResizable(false);
+        stage.show();
 
 
-        boolean pin_found = LoginDao.checkIfPinPresent();
-
-        if (pin_found) {
-            stage.setTitle("Offline IO Application");
-            StaticAppData.setNextWindow("home");
-            stage.setScene(new Scene(screenController.activate("passcode")));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
-            stage.setResizable(false);
-            stage.show();
-        } else {
-            stage.setTitle("Offline IO Application");
-            StaticAppData.setNextWindow("masterData");
-            stage.setScene(new Scene(screenController.activate("login")));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
-            stage.setResizable(false);
-            stage.show();
-        }
+//        boolean pin_found = LoginDao.checkIfPinPresent();
+//
+//        if (pin_found) {
+//            stage.setTitle("Offline IO Application");
+//            StaticAppData.setNextWindow("home");
+//            stage.setScene(new Scene(screenController.activate("passcode")));
+//            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
+//            stage.setResizable(false);
+//            stage.show();
+//        } else {
+//            stage.setTitle("Offline IO Application");
+//            StaticAppData.setNextWindow("masterData");
+//            stage.setScene(new Scene(screenController.activate("login")));
+//            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
+//            stage.setResizable(false);
+//            stage.show();
+//        }
     }
 }

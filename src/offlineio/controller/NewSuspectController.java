@@ -39,20 +39,11 @@ import offlineio.util.Validations;
  */
 public class NewSuspectController implements Initializable {
 
-    @FXML
     private TextField txtFirstName;
-    @FXML
     private TextField txtMiddleName;
-    @FXML
     private TextField txtLastName;
-    @FXML
     private TextField txtFatherName;
-    @FXML
     private ChoiceBox<KeyValuePair> selVillage;
-    @FXML
-    private Label lblTempId;
-    @FXML
-    private Label lblSuspectName;
 
     /**
      * Initializes the controller class.

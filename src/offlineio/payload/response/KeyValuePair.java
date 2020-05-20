@@ -23,6 +23,10 @@ public class KeyValuePair {
         return key;
     }
 
+    public String getValue() {
+        return value;
+    }
+    
     public String toString() {
         return value;
     }

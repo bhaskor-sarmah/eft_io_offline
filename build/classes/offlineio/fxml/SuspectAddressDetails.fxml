@@ -2,19 +2,16 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="697.0" prefWidth="1055.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.NewSuspectController">
+<AnchorPane id="AnchorPane" prefHeight="697.0" prefWidth="1055.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.SuspectAddressDetailsController">
    <stylesheets>
       <URL value="@/offlineio/style/newsuspect.css" />
    </stylesheets>
@@ -36,199 +33,327 @@
       </Button>
       <ScrollPane layoutX="10.0" layoutY="74.0" prefHeight="623.0" prefWidth="1045.0">
          <content>
-            <AnchorPane prefHeight="1249.0" prefWidth="1040.0" style="-fx-background-color: #FFFFFF;">
+            <AnchorPane prefHeight="1231.0" prefWidth="1040.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <Label fx:id="lblMessage" layoutX="59.0" layoutY="5.0" prefHeight="25.0" prefWidth="981.0" textAlignment="CENTER" textFill="#e40000">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="9.0" layoutY="36.0" prefHeight="356.0" prefWidth="466.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="36.0" layoutY="30.0" prefHeight="200.0" prefWidth="971.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
                      <children>
-                        <Label layoutX="98.0" layoutY="107.0" prefHeight="25.0" prefWidth="69.0" text="Hair Color" textFill="#2908ab">
+                        <Label layoutX="395.0" layoutY="63.0" prefHeight="25.0" prefWidth="69.0" text="State Name" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="98.0" layoutY="156.0" prefHeight="25.0" prefWidth="69.0" text="Eye Color" textFill="#2908ab">
+                        <Label layoutX="384.0" layoutY="112.0" prefHeight="25.0" prefWidth="80.0" text="District Name" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="90.0" layoutY="205.0" prefHeight="25.0" prefWidth="86.0" text="Complextion" textFill="#2908ab">
+                        <Label layoutX="695.0" layoutY="112.0" prefHeight="25.0" prefWidth="96.0" text="Vill/Town Name" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="69.0" layoutY="57.0" prefHeight="25.0" prefWidth="96.0" text="Suspect Height" textFill="#2908ab">
+                        <Label layoutX="38.0" layoutY="113.0" prefHeight="25.0" prefWidth="90.0" text="Other Country" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="52.0" layoutY="254.0" prefHeight="25.0" prefWidth="115.0" text="Identification Mark" textFill="#2908ab">
+                        <Label layoutX="711.0" layoutY="161.0" prefHeight="25.0" prefWidth="80.0" text="Pin/Zip Code" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtSuspectHeight" layoutX="173.0" layoutY="57.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtSuspectHairColor" layoutX="172.0" layoutY="106.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtSuspectEyeColor" layoutX="172.0" layoutY="156.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtSuspectComplextion" layoutX="172.0" layoutY="205.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextArea fx:id="txtAreaIdentificationMark" layoutX="172.0" layoutY="254.0" prefHeight="75.0" prefWidth="184.0" />
-                        <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="37.0" prefWidth="454.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" AnchorPane.bottomAnchor="315.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="4.0">
+                        <Label layoutX="35.0" layoutY="62.0" prefHeight="25.0" prefWidth="96.0" text="Select Country" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="703.0" layoutY="63.0" prefHeight="25.0" prefWidth="80.0" text="Police Station" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="5.0" layoutY="4.0" prefHeight="35.0" prefWidth="962.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;">
                            <children>
-                              <Label alignment="CENTER" layoutY="8.0" prefHeight="20.0" prefWidth="454.0" text="SUSPECT PHYSICAL DETAILS" textAlignment="CENTER" textFill="WHITE">
+                              <Label alignment="CENTER" layoutY="8.0" prefHeight="20.0" prefWidth="962.0" text="ADDRESS IN COUNTRY OF ORIGIN" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
+                        <ChoiceBox fx:id="selAddOriginCountry" layoutX="131.0" layoutY="62.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtOtherCountryName" layoutX="131.0" layoutY="113.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddOriginState" layoutX="469.0" layoutY="62.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddOriginDistrict" layoutX="469.0" layoutY="112.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddOriginPs" layoutX="793.0" layoutY="63.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddOriginVill" layoutX="793.0" layoutY="112.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddOriginPin" layoutX="793.0" layoutY="161.0" prefHeight="25.0" prefWidth="164.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="514.0" layoutY="34.0" prefHeight="488.0" prefWidth="484.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="36.0" layoutY="251.0" prefHeight="312.0" prefWidth="971.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
                      <children>
-                        <Label layoutX="31.0" layoutY="106.0" prefHeight="25.0" prefWidth="157.0" text="Select Immigration Route" textFill="#2908ab">
+                        <Label layoutX="48.0" layoutY="131.0" prefHeight="25.0" prefWidth="80.0" text="Select State *" textFill="#ff0404">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="14.0" layoutY="50.0" prefHeight="37.0" prefWidth="171.0" text="Since when staying in India ?" textFill="#2908ab" wrapText="true">
+                        <Label layoutX="39.0" layoutY="179.0" prefHeight="25.0" prefWidth="90.0" text="Select District" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="24.0" layoutY="146.0" prefHeight="25.0" prefWidth="157.0" text="Is He/She Voter in India ? *" textFill="#e40000">
+                        <Label layoutX="338.0" layoutY="84.0" prefHeight="25.0" prefWidth="127.0" text="Select Police Station" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="24.0" layoutY="205.0" prefHeight="37.0" prefWidth="215.0" text="When did his/her name first appeared in the voter list ?" textFill="#2908ab" wrapText="true">
+                        <Label layoutX="32.0" layoutY="82.0" prefHeight="25.0" prefWidth="96.0" text="Select Country *" textFill="#ff0404">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="24.0" layoutY="277.0" prefHeight="25.0" prefWidth="215.0" text="Voter Part No." textFill="#2908ab" wrapText="true">
+                        <Label layoutX="714.0" layoutY="84.0" prefHeight="25.0" prefWidth="80.0" text="Post Office" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="24.0" layoutY="342.0" prefHeight="69.0" prefWidth="157.0" text="Is the person an Employee of Government/Private Company or a shared company ?" textFill="#e40000" wrapText="true">
+                        <Label layoutX="688.0" layoutY="131.0" prefHeight="25.0" prefWidth="106.0" text="Revenue Village" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="258.0" layoutY="415.0" prefHeight="25.0" prefWidth="215.0" text="Employer Name" textFill="#2908ab" wrapText="true">
+                        <Label layoutX="674.0" layoutY="228.0" prefHeight="25.0" prefWidth="115.0" text="Village Head Name" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="24.0" layoutY="414.0" prefHeight="25.0" prefWidth="215.0" text="Employment Type" textFill="#2908ab" wrapText="true">
+                        <Label layoutX="667.0" layoutY="274.0" prefHeight="25.0" prefWidth="127.0" text="Village Head Ph. No." textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="255.0" layoutY="215.0" prefHeight="25.0" prefWidth="215.0" text="Voter Epic No." textFill="#2908ab" wrapText="true">
+                        <Label layoutX="378.0" layoutY="180.0" prefHeight="25.0" prefWidth="90.0" text="Select Village" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="255.0" layoutY="277.0" prefHeight="25.0" prefWidth="215.0" text="Voter Part Name" textFill="#2908ab" wrapText="true">
-                           <font>
-                              <Font name="Arial Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtSinceWhenInIndia" layoutX="199.0" layoutY="56.0" prefHeight="25.0" prefWidth="184.0" />
-                        <ChoiceBox fx:id="selBoxImmigrationRoute" layoutX="199.0" layoutY="106.0" prefHeight="25.0" prefWidth="184.0" />
-                        <RadioButton fx:id="rbIsVoterYes" layoutX="200.0" layoutY="150.0" mnemonicParsing="false" text="Yes" />
-                        <RadioButton fx:id="rbIsVoterNo" layoutX="200.0" layoutY="175.0" mnemonicParsing="false" selected="true" text="No" />
-                        <TextField fx:id="txtVoterName" disable="true" layoutX="24.0" layoutY="243.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtVoterEpic" disable="true" layoutX="255.0" layoutY="241.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtVoterPart" disable="true" layoutX="24.0" layoutY="303.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtVoterPartName" disable="true" layoutX="255.0" layoutY="303.0" prefHeight="25.0" prefWidth="184.0" />
-                        <RadioButton fx:id="rbIsEmployeeYes" layoutX="200.0" layoutY="346.0" mnemonicParsing="false" text="Yes" />
-                        <RadioButton fx:id="rbIsEmployeeNo" layoutX="200.0" layoutY="371.0" mnemonicParsing="false" selected="true" text="No" />
-                        <ChoiceBox fx:id="selBoxEmpType" disable="true" layoutX="24.0" layoutY="441.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtEmpName" disable="true" layoutX="258.0" layoutY="441.0" prefHeight="25.0" prefWidth="184.0" />
-                        <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="37.0" prefWidth="470.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="6.0">
+                        <AnchorPane layoutX="4.0" layoutY="4.0" prefHeight="37.0" prefWidth="962.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;">
                            <children>
-                              <Label alignment="CENTER" layoutY="9.0" prefHeight="20.0" prefWidth="454.0" text="SUSPECT OTHER DETAILS" textAlignment="CENTER" textFill="WHITE">
+                              <Label alignment="CENTER" layoutX="254.0" layoutY="9.0" prefHeight="20.0" prefWidth="454.0" text="ADDRESS IN INDIA" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
+                        <Label layoutX="41.0" layoutY="225.0" prefHeight="25.0" prefWidth="80.0" text="Other District" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="341.0" layoutY="131.0" prefHeight="25.0" prefWidth="121.0" text="Other Police Station" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="382.0" layoutY="225.0" prefHeight="25.0" prefWidth="80.0" text="Other Village" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="705.0" layoutY="180.0" prefHeight="25.0" prefWidth="80.0" text="Pin/Zip Code" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="selAddIndCountry" layoutX="130.0" layoutY="82.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddIndState" layoutX="130.0" layoutY="131.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddIndDistrict" layoutX="130.0" layoutY="179.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndOtherDist" layoutX="130.0" layoutY="225.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddIndPs" layoutX="468.0" layoutY="83.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndOtherPs" layoutX="468.0" layoutY="131.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddIndVill" layoutX="468.0" layoutY="180.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndOtherVill" layoutX="468.0" layoutY="225.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndPo" layoutX="793.0" layoutY="84.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndRevVill" layoutX="793.0" layoutY="131.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndPin" layoutX="793.0" layoutY="180.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndVillHeadName" layoutX="793.0" layoutY="228.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddIndVillHeadPh" layoutX="793.0" layoutY="274.0" prefHeight="25.0" prefWidth="164.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="18.0" layoutY="820.0" prefHeight="347.0" prefWidth="472.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
+                  <AnchorPane layoutX="35.0" layoutY="590.0" prefHeight="251.0" prefWidth="971.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
                      <children>
-                        <Label layoutX="28.0" layoutY="106.0" prefHeight="25.0" prefWidth="134.0" text="Land/House From Year" textFill="#2908ab">
+                        <Label layoutX="64.0" layoutY="156.0" prefHeight="25.0" prefWidth="69.0" text="Select State" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="77.0" layoutY="156.0" prefHeight="25.0" prefWidth="96.0" text="Land Daag No." textFill="#2908ab">
+                        <Label layoutX="54.0" layoutY="202.0" prefHeight="25.0" prefWidth="90.0" text="Select District" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="77.0" layoutY="205.0" prefHeight="25.0" prefWidth="96.0" text="Land Patta No." textFill="#2908ab">
+                        <Label layoutX="345.0" layoutY="111.0" prefHeight="25.0" prefWidth="127.0" text="Select Police Station" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label layoutX="48.0" layoutY="252.0" prefHeight="25.0" prefWidth="115.0" text="Land House Details" textFill="#2908ab">
+                        <Label layoutX="395.0" layoutY="200.0" prefHeight="25.0" prefWidth="80.0" text="Post Office" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
                         </Label>
-                        <CheckBox layoutX="37.0" layoutY="48.0" mnemonicParsing="false" text="Suspect have own Land/House in India">
+                        <Label layoutX="704.0" layoutY="69.0" prefHeight="25.0" prefWidth="90.0" text="Select Village" textFill="#2908ab">
                            <font>
                               <Font name="Arial Bold" size="12.0" />
                            </font>
-                        </CheckBox>
-                        <TextField fx:id="txtMiddleName13" disable="true" layoutX="172.0" layoutY="106.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtLastName2" disable="true" layoutX="172.0" layoutY="156.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtMiddleName12" disable="true" layoutX="172.0" layoutY="205.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextArea disable="true" layoutX="172.0" layoutY="252.0" prefHeight="75.0" prefWidth="184.0" />
-                        <AnchorPane layoutX="2.0" layoutY="3.0" prefHeight="33.0" prefWidth="466.0" style="-fx-background-color: #595959; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;">
+                        </Label>
+                        <Label layoutX="710.0" layoutY="156.0" prefHeight="25.0" prefWidth="80.0" text="Pin/Zip Code" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="4.0" layoutY="5.0" prefHeight="37.0" prefWidth="962.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;">
                            <children>
-                              <Label alignment="CENTER" layoutX="2.0" layoutY="9.0" prefHeight="20.0" prefWidth="466.0" text="SUSPECT OWN LAND/HOUSE IN INDIA" textAlignment="CENTER" textFill="WHITE">
+                              <Label alignment="CENTER" layoutX="38.0" layoutY="2.0" prefHeight="20.0" prefWidth="925.0" text="IF SUSPECT STAYING ON RENT HOUSE" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="526.0" layoutY="951.0" prefHeight="215.0" prefWidth="472.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
-                     <children>
-                        <Label layoutX="91.0" layoutY="66.0" prefHeight="25.0" prefWidth="69.0" text="Witness 1" textFill="#2908ab">
-                           <font>
-                              <Font name="Arial Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="91.0" layoutY="116.0" prefHeight="25.0" prefWidth="69.0" text="Witness 2" textFill="#2908ab">
-                           <font>
-                              <Font name="Arial Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="txtMiddleName131" layoutX="172.0" layoutY="66.0" prefHeight="25.0" prefWidth="184.0" />
-                        <TextField fx:id="txtLastName21" layoutX="172.0" layoutY="116.0" prefHeight="25.0" prefWidth="184.0" />
-                        <AnchorPane layoutX="2.0" layoutY="3.0" prefHeight="33.0" prefWidth="466.0" style="-fx-background-color: #595959; -fx-border-radius: 10 10 10 10; -fx-background-radius: 10 10 10 10;">
-                           <children>
-                              <Label alignment="CENTER" layoutX="2.0" layoutY="9.0" prefHeight="20.0" prefWidth="466.0" text="WITNESS" textAlignment="CENTER" textFill="WHITE">
+                              <Label alignment="CENTER" layoutX="28.0" layoutY="16.0" prefHeight="20.0" prefWidth="934.0" text="In whose land/house he/she staying now" textAlignment="CENTER" textFill="WHITE">
                                  <font>
-                                    <Font name="Arial Bold" size="16.0" />
+                                    <Font name="Arial Bold" size="10.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
+                        <Label layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="127.0" text="House Owner Name" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="111.0" prefHeight="25.0" prefWidth="127.0" text="House Owner Mobile" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="386.0" layoutY="69.0" prefHeight="25.0" prefWidth="80.0" text="Other District" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="348.0" layoutY="156.0" prefHeight="25.0" prefWidth="127.0" text="Other Police Station" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="710.0" layoutY="111.0" prefHeight="25.0" prefWidth="80.0" text="Other Village" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtAddRentName" layoutX="146.0" layoutY="69.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddRentMob" layoutX="146.0" layoutY="111.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddRentState" layoutX="146.0" layoutY="156.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddRentDistrict" layoutX="146.0" layoutY="202.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddRentOtherDist" layoutX="473.0" layoutY="69.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddRentPs" layoutX="473.0" layoutY="111.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddRentOtherPs" layoutX="473.0" layoutY="156.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddRentPo" layoutX="473.0" layoutY="200.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddRentVill" layoutX="792.0" layoutY="69.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddRentOtherVill" layoutX="792.0" layoutY="111.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddRentPin" layoutX="792.0" layoutY="156.0" prefHeight="25.0" prefWidth="164.0" />
                      </children>
                   </AnchorPane>
-                  <Button layoutX="425.0" layoutY="1190.0" mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #3364FF;" text="Save New Suspect Details" textFill="WHITE">
+                  <AnchorPane layoutX="33.0" layoutY="866.0" prefHeight="243.0" prefWidth="977.0" style="-fx-border-color: #3364FF; -fx-border-radius: 10 10 10 10;">
+                     <children>
+                        <AnchorPane layoutX="4.0" layoutY="4.0" prefHeight="35.0" prefWidth="971.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;">
+                           <children>
+                              <Label alignment="CENTER" layoutY="2.0" prefHeight="20.0" prefWidth="971.0" text="EMPLOYER/LAND OWNER ADDRESS" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutY="14.0" prefHeight="20.0" prefWidth="971.0" text="If an employee of the Govt./private company or shared cropper" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label layoutX="28.0" layoutY="57.0" prefHeight="25.0" prefWidth="96.0" text="Employer Name" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="104.0" prefHeight="25.0" prefWidth="69.0" text="Select State" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="37.0" layoutY="150.0" prefHeight="25.0" prefWidth="90.0" text="Select District" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="342.0" layoutY="57.0" prefHeight="25.0" prefWidth="127.0" text="Select Police Station" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="393.0" layoutY="150.0" prefHeight="25.0" prefWidth="80.0" text="Post Office" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="695.0" layoutY="55.0" prefHeight="25.0" prefWidth="90.0" text="Select Village" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="702.0" layoutY="150.0" prefHeight="25.0" prefWidth="80.0" text="Pin/Zip Code" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="196.0" prefHeight="25.0" prefWidth="80.0" text="Other District" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="345.0" layoutY="102.0" prefHeight="25.0" prefWidth="127.0" text="Other Police Station" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="702.0" layoutY="102.0" prefHeight="25.0" prefWidth="80.0" text="Other Village" textFill="#2908ab">
+                           <font>
+                              <Font name="Arial Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtAddEmpName" layoutX="129.0" layoutY="56.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddEmpState" layoutX="129.0" layoutY="104.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddEmpDistrict" layoutX="129.0" layoutY="150.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddEmpOtherDist" layoutX="129.0" layoutY="196.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddEmpPs" layoutX="471.0" layoutY="56.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddEmpOtherPs" layoutX="470.0" layoutY="102.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddEmpPo" layoutX="470.0" layoutY="150.0" prefHeight="25.0" prefWidth="164.0" />
+                        <ChoiceBox fx:id="selAddEmpVill" layoutX="784.0" layoutY="55.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddEmpOtherVill" layoutX="784.0" layoutY="102.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="txtAddEmpPin" layoutX="784.0" layoutY="150.0" prefHeight="25.0" prefWidth="164.0" />
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="356.0" layoutY="1137.0" mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #28A745;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="550.0" layoutY="1137.0" mnemonicParsing="false" onMouseClicked="#onSaveAsDraftClick" prefHeight="37.0" prefWidth="137.0" style="-fx-background-color: #007BFF;" text="Save As Draft" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

@@ -39,10 +39,52 @@ public class SuspectAddress {
     public String is_ready_for_sync;
     public String sync_status;
 
+    public SuspectAddress() {
+    }
+    
     public SuspectAddress(String address_id, String fk_suspect_id, String fk_address_type_code) {
         this.address_id = address_id;
         this.fk_suspect_id = fk_suspect_id;
         this.fk_address_type_code = fk_address_type_code;
+    }
+
+    public SuspectAddress(SuspectAddress address) {
+        this.address_id = address.getAddress_id();
+        this.fk_suspect_id = address.getFk_suspect_id();
+        this.created_by = address.getCreated_by();
+        this.updated_by = address.getUpdated_by();
+        this.captured_at = address.getCaptured_at();
+        this.captured_by = address.getCaptured_by();
+        this.device_id = address.getDevice_id();
+        this.house_no = address.getHouse_no();
+        this.house_owner_name = address.getHouse_owner_name();
+        this.house_owner_phone_no = address.getHouse_owner_phone_no();
+        this.ip_address = address.getIp_address();
+        this.latitude = address.getLatitude();
+        this.longitude = address.getLongitude();
+        this.other_country = address.getOther_country();
+        this.other_district = address.getOther_district();
+        this.other_state = address.getOther_state();
+        this.other_thana = address.getOther_thana();
+        this.other_village = address.getOther_village();
+        this.pin_code = address.getPin_code();
+        this.post_office = address.getPost_office();
+        this.revenue_village_name = address.getRevenue_village_name();
+        this.village_head_name = address.getVillage_head_name();
+        this.village_head_phone_no = address.getVillage_head_phone_no();
+        this.fk_address_type_code = address.getFk_address_type_code();
+        this.fk_country_code = address.getFk_country_code();
+        this.fk_current_status_code = address.getFk_current_status_code();
+        this.fk_district_code = address.getFk_district_code();
+        this.fk_state_code = address.getFk_state_code();
+        this.fk_suspect_district_code = address.getFk_suspect_district_code();
+        this.fk_suspect_ft_code = address.getFk_suspect_ft_code();
+        this.fk_suspect_state_code = address.getFk_suspect_state_code();
+        this.fk_suspect_thana_code = address.getFk_suspect_thana_code();
+        this.fk_thana_code = address.getFk_thana_code();
+        this.fk_village_code = address.getFk_village_code();
+        this.is_ready_for_sync = address.getIs_ready_for_sync();
+        this.sync_status = address.getSync_status();
     }
 
     public SuspectAddress(String address_id, String fk_suspect_id, String created_by, String updated_by, String captured_at, String captured_by, String device_id, String house_no, String house_owner_name, String house_owner_phone_no, String ip_address, String latitude, String longitude, String other_country, String other_district, String other_state, String other_thana, String other_village, String pin_code, String post_office, String revenue_village_name, String village_head_name, String village_head_phone_no, String fk_address_type_code, String fk_country_code, String fk_current_status_code, String fk_district_code, String fk_state_code, String fk_suspect_district_code, String fk_suspect_ft_code, String fk_suspect_state_code, String fk_suspect_thana_code, String fk_thana_code, String fk_village_code, String is_ready_for_sync, String sync_status) {

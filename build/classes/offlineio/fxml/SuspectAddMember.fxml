@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="691.0" prefWidth="1001.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.SuspectAddMemberController">
+   <stylesheets>
+      <URL value="@/offlineio/style/newsuspect.css" />
+   </stylesheets>
+   <children>
+      <AnchorPane fx:id="mainAnchorPane" layoutY="65.0" prefHeight="626.0" prefWidth="1001.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ScrollPane fx:id="scrollPane" layoutY="68.0" prefHeight="549.0" prefWidth="1001.0" style="-fx-background-color: #DCDCDC; -fx-padding: 5;">
+               <content>
+                  <AnchorPane fx:id="mainVbox" prefHeight="536.0" prefWidth="987.0" />
+               </content>
+            </ScrollPane>
+            <Button layoutX="43.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#onAddMemberClick" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #007BFF;" text="Add Family Member" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="261.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#onRemoveMemberClick" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #FF0404;" text="Remove Family Member" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="752.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#onSaveClick" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #28A745;" text="Save Family Members" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="46.0" layoutY="19.0" text="Suspect Family Members" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="52.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0" onMouseClicked="#onBackClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/less_than.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="857.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#onLogoutClick" style="-fx-background-color: #ffffff;" text="Logout">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

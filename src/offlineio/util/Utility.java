@@ -7,6 +7,8 @@ package offlineio.util;
 
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,4 +43,17 @@ public class Utility {
     public static String getDeviceId(){
         return  getMacAddress();
     }
+    
+    public static LocalDate LOCAL_DATE(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate localDate = LocalDate.parse(dateString, formatter);
+        return localDate;
+    }
+
+    public static LocalDate REVERSE_LOCAL_DATE(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(dateString, formatter);
+        return localDate;
+    }
+
 }

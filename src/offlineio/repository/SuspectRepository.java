@@ -184,169 +184,6 @@ public class SuspectRepository {
         return false;
     }
 
-    public static boolean saveAddress(SuspectAddress address) {
-        Connection conn = null;
-        MySQLConnection msconn = new MySQLConnection();
-        try {
-            conn = msconn.getMySQLConnection();
-        } catch (Exception e) {
-            System.out.println("Exception : " + e.getMessage());
-            return false;
-        }
-
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            int index = 1;
-            ps = conn.prepareStatement("INSERT INTO `trans_suspect_address` \n"
-                    + "	(`address_id`, \n"
-                    + "	`fk_suspect_id`, \n"
-                    + "	`created_by`, \n"
-                    + "	`captured_at`, \n"
-                    + "	`captured_by`, \n"
-                    + "	`device_id`, \n"
-                    + "	`house_no`, \n"
-                    + "	`house_owner_name`, \n"
-                    + "	`house_owner_phone_no`, \n"
-                    + "	`ip_address`, \n"
-                    + "	`latitude`, \n"
-                    + "	`longitude`, \n"
-                    + "	`other_country`, \n"
-                    + "	`other_district`, \n"
-                    + "	`other_state`, \n"
-                    + "	`other_thana`, \n"
-                    + "	`other_village`, \n"
-                    + "	`pin_code`, \n"
-                    + "	`post_office`, \n"
-                    + "	`revenue_village_name`, \n"
-                    + "	`village_head_name`, \n"
-                    + "	`village_head_phone_no`, \n"
-                    + "	`fk_address_type_code`, \n"
-                    + "	`fk_country_code`, \n"
-                    + "	`fk_current_status_code`, \n"
-                    + "	`fk_district_code`, \n"
-                    + "	`fk_state_code`, \n"
-                    + "	`fk_suspect_district_code`, \n"
-                    + "	`fk_suspect_ft_code`, \n"
-                    + "	`fk_suspect_state_code`, \n"
-                    + "	`fk_suspect_thana_code`, \n"
-                    + "	`fk_thana_code`, \n"
-                    + "	`fk_village_code`, \n"
-                    + "	`is_ready_for_sync`, \n"
-                    + "	`sync_status`\n"
-                    + "	)\n"
-                    + "	VALUES\n"
-                    + "	("
-                    + " ?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + " ?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + " ?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + " ?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?, \n"
-                    + "	?\n"
-                    + "	)");
-
-            ps.setString(index++, address.getAddress_id());
-            ps.setString(index++, address.getFk_suspect_id());
-            ps.setString(index++, address.getCaptured_by());
-            ps.setString(index++, getDateTime());
-            ps.setString(index++, address.getCreated_by());
-            ps.setString(index++, address.getDevice_id());
-
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-            ps.setString(index++, "");
-
-            ps.setString(index++, address.getFk_address_type_code());
-            ps.setString(index++, address.getFk_country_code());
-            ps.setString(index++, "");
-            ps.setString(index++, address.getFk_district_code());
-            ps.setString(index++, address.getFk_state_code());
-            ps.setString(index++, address.getFk_suspect_district_code());
-            ps.setString(index++, "");
-            ps.setString(index++, address.getFk_suspect_state_code());
-            ps.setString(index++, address.getFk_suspect_thana_code());
-            ps.setString(index++, address.getFk_thana_code());
-            ps.setString(index++, address.getFk_village_code());
-
-            // IS READY FOR SYNC & SYNC STATUS
-            ps.setString(index++, "N");
-            ps.setString(index++, "N");
-
-            System.out.println(ps);
-            int i = ps.executeUpdate();
-            return i > 0;
-        } catch (SQLException e) {
-            System.out.println("Exception : " + e.getMessage());
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-
-            }
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-
-            }
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-
-            }
-        }
-        return false;
-    }
-
     private static String getDateTime() {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm a", Locale.getDefault());
@@ -551,7 +388,7 @@ public class SuspectRepository {
 
         try {
             int index = 1;
-            ps = conn.prepareStatement("UPDATE `offline_io`.`trans_suspect` \n"
+            ps = conn.prepareStatement("UPDATE `trans_suspect` \n"
                     + "	SET\n"
                     + "	`suspect_id` = ? , \n"
                     + "	`first_name` = ? , \n"
@@ -720,5 +557,595 @@ public class SuspectRepository {
             }
         }
         return false;
+    }
+
+    public static boolean saveAddress(SuspectAddress address) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("INSERT INTO `trans_suspect_address` \n"
+                    + "	(`address_id`, \n"
+                    + "	`fk_suspect_id`, \n"
+                    + "	`created_by`, \n"
+                    + "	`captured_at`, \n"
+                    + "	`captured_by`, \n"
+                    + "	`device_id`, \n"
+                    + "	`house_no`, \n"
+                    + "	`house_owner_name`, \n"
+                    + "	`house_owner_phone_no`, \n"
+                    + "	`ip_address`, \n"
+                    + "	`latitude`, \n"
+                    + "	`longitude`, \n"
+                    + "	`other_country`, \n"
+                    + "	`other_district`, \n"
+                    + "	`other_state`, \n"
+                    + "	`other_thana`, \n"
+                    + "	`other_village`, \n"
+                    + "	`pin_code`, \n"
+                    + "	`post_office`, \n"
+                    + "	`revenue_village_name`, \n"
+                    + "	`village_head_name`, \n"
+                    + "	`village_head_phone_no`, \n"
+                    + "	`fk_address_type_code`, \n"
+                    + "	`fk_country_code`, \n"
+                    + "	`fk_current_status_code`, \n"
+                    + "	`fk_district_code`, \n"
+                    + "	`fk_state_code`, \n"
+                    + "	`fk_suspect_district_code`, \n"
+                    + "	`fk_suspect_ft_code`, \n"
+                    + "	`fk_suspect_state_code`, \n"
+                    + "	`fk_suspect_thana_code`, \n"
+                    + "	`fk_thana_code`, \n"
+                    + "	`fk_village_code`, \n"
+                    + "	`is_ready_for_sync`, \n"
+                    + "	`sync_status`\n"
+                    + "	)\n"
+                    + "	VALUES\n"
+                    + "	("
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?\n"
+                    + "	)");
+
+            ps.setString(index++, address.getAddress_id());
+            ps.setString(index++, address.getFk_suspect_id());
+            ps.setString(index++, address.getCaptured_by());
+            ps.setString(index++, getDateTime());
+            ps.setString(index++, address.getCreated_by());
+            ps.setString(index++, address.getDevice_id());
+
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+
+            ps.setString(index++, address.getFk_address_type_code());
+            ps.setString(index++, address.getFk_country_code());
+            ps.setString(index++, "");
+            ps.setString(index++, address.getFk_district_code());
+            ps.setString(index++, address.getFk_state_code());
+            ps.setString(index++, address.getFk_suspect_district_code());
+            ps.setString(index++, "");
+            ps.setString(index++, address.getFk_suspect_state_code());
+            ps.setString(index++, address.getFk_suspect_thana_code());
+            ps.setString(index++, address.getFk_thana_code());
+            ps.setString(index++, address.getFk_village_code());
+
+            // IS READY FOR SYNC & SYNC STATUS
+            ps.setString(index++, "N");
+            ps.setString(index++, "N");
+
+            System.out.println(ps);
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean updateAddress(SuspectAddress suspectAddress) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("UPDATE `trans_suspect_address` \n"
+                    + "	SET\n"
+                    + "`fk_suspect_id` = ? ,\n"
+                    + "`created_by` = ? ,\n"
+                    + "`updated_by` = ? ,\n"
+                    + "`captured_at` = ? ,\n"
+                    + "`captured_by` = ? ,\n"
+                    + "`device_id` = ? ,\n"
+                    + "`house_no` = ? ,\n"
+                    + "`house_owner_name` = ? ,\n"
+                    + "`house_owner_phone_no` = ? ,\n"
+                    + "`ip_address` = ? ,\n"
+                    + "`latitude` = ? ,\n"
+                    + "`longitude` = ? ,\n"
+                    + "`other_country` = ? ,\n"
+                    + "`other_district` = ? ,\n"
+                    + "`other_state` = ? ,\n"
+                    + "`other_thana` = ? ,\n"
+                    + "`other_village` = ? ,\n"
+                    + "`pin_code` = ? ,\n"
+                    + "`post_office` = ? ,\n"
+                    + "`revenue_village_name` = ? ,\n"
+                    + "`village_head_name` = ? ,\n"
+                    + "`village_head_phone_no` = ? ,\n"
+                    + "`fk_address_type_code` = ? ,\n"
+                    + "`fk_country_code` = ? ,\n"
+                    + "`fk_current_status_code` = ? ,\n"
+                    + "`fk_district_code` = ? ,\n"
+                    + "`fk_state_code` = ? ,\n"
+                    + "`fk_suspect_district_code` = ? ,\n"
+                    + "`fk_suspect_ft_code` = ? ,\n"
+                    + "`fk_suspect_state_code` = ? ,\n"
+                    + "`fk_suspect_thana_code` = ? ,\n"
+                    + "`fk_thana_code` = ? ,\n"
+                    + "`fk_village_code` = ? ,\n"
+                    + "`is_ready_for_sync` = ? ,\n"
+                    + "`sync_status` = ?"
+                    + "WHERE"
+                    + "`address_id` = ?");
+            ps.setString(index++, suspectAddress.getFk_suspect_id());
+            ps.setString(index++, suspectAddress.getCreated_by());
+            ps.setString(index++, suspectAddress.getUpdated_by());
+            ps.setString(index++, suspectAddress.getCaptured_at());
+            ps.setString(index++, suspectAddress.getCaptured_by());
+            ps.setString(index++, suspectAddress.getDevice_id());
+            ps.setString(index++, suspectAddress.getHouse_no());
+            ps.setString(index++, suspectAddress.getHouse_owner_name());
+            ps.setString(index++, suspectAddress.getHouse_owner_phone_no());
+            ps.setString(index++, suspectAddress.getIp_address());
+            ps.setString(index++, suspectAddress.getLatitude());
+            ps.setString(index++, suspectAddress.getLongitude());
+            ps.setString(index++, suspectAddress.getOther_country());
+            ps.setString(index++, suspectAddress.getOther_district());
+            ps.setString(index++, suspectAddress.getOther_state());
+            ps.setString(index++, suspectAddress.getOther_thana());
+            ps.setString(index++, suspectAddress.getOther_village());
+
+            ps.setString(index++, suspectAddress.getPin_code());
+            ps.setString(index++, suspectAddress.getPost_office());
+            ps.setString(index++, suspectAddress.getRevenue_village_name());
+            ps.setString(index++, suspectAddress.getVillage_head_name());
+            ps.setString(index++, suspectAddress.getVillage_head_phone_no());
+            ps.setString(index++, suspectAddress.getFk_address_type_code());
+            ps.setString(index++, suspectAddress.getFk_country_code());
+            ps.setString(index++, suspectAddress.getFk_current_status_code());
+            ps.setString(index++, suspectAddress.getFk_district_code());
+            ps.setString(index++, suspectAddress.getFk_state_code());
+            ps.setString(index++, suspectAddress.getFk_suspect_district_code());
+            ps.setString(index++, suspectAddress.getFk_suspect_ft_code());
+            ps.setString(index++, suspectAddress.getFk_suspect_state_code());
+            ps.setString(index++, suspectAddress.getFk_suspect_thana_code());
+            ps.setString(index++, suspectAddress.getFk_thana_code());
+            ps.setString(index++, suspectAddress.getFk_village_code());
+            ps.setString(index++, suspectAddress.getIs_ready_for_sync());
+            ps.setString(index++, suspectAddress.getSync_status());
+
+            ps.setString(index++, suspectAddress.getAddress_id());
+            System.out.println(ps);
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean saveSuspectAddress(SuspectAddress address) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("INSERT INTO `trans_suspect_address` \n"
+                    + "	(`address_id`, \n"
+                    + "	`fk_suspect_id`, \n"
+                    + "	`created_by`, \n"
+                    + "	`captured_at`, \n"
+                    + "	`captured_by`, \n"
+                    + "	`device_id`, \n"
+                    + "	`house_no`, \n"
+                    + "	`house_owner_name`, \n"
+                    + "	`house_owner_phone_no`, \n"
+                    + "	`ip_address`, \n"
+                    + "	`latitude`, \n"
+                    + "	`longitude`, \n"
+                    + "	`other_country`, \n"
+                    + "	`other_district`, \n"
+                    + "	`other_state`, \n"
+                    + "	`other_thana`, \n"
+                    + "	`other_village`, \n"
+                    + "	`pin_code`, \n"
+                    + "	`post_office`, \n"
+                    + "	`revenue_village_name`, \n"
+                    + "	`village_head_name`, \n"
+                    + "	`village_head_phone_no`, \n"
+                    + "	`fk_address_type_code`, \n"
+                    + "	`fk_country_code`, \n"
+                    + "	`fk_current_status_code`, \n"
+                    + "	`fk_district_code`, \n"
+                    + "	`fk_state_code`, \n"
+                    + "	`fk_suspect_district_code`, \n"
+                    + "	`fk_suspect_ft_code`, \n"
+                    + "	`fk_suspect_state_code`, \n"
+                    + "	`fk_suspect_thana_code`, \n"
+                    + "	`fk_thana_code`, \n"
+                    + "	`fk_village_code`, \n"
+                    + "	`is_ready_for_sync`, \n"
+                    + "	`sync_status`\n"
+                    + "	)\n"
+                    + "	VALUES\n"
+                    + "	("
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + " ?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?\n"
+                    + "	)");
+
+            ps.setString(index++, address.getAddress_id());
+            ps.setString(index++, address.getFk_suspect_id());
+            ps.setString(index++, address.getCaptured_by());
+            ps.setString(index++, getDateTime());
+            ps.setString(index++, address.getCreated_by());
+            ps.setString(index++, address.getDevice_id());
+
+            ps.setString(index++, "");
+            ps.setString(index++, address.getHouse_owner_name());
+            ps.setString(index++, address.getHouse_owner_phone_no());
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+            ps.setString(index++, "");
+
+            ps.setString(index++, address.getOther_country());
+            ps.setString(index++, address.getOther_district());
+            ps.setString(index++, address.getOther_state());
+            ps.setString(index++, address.getOther_thana());
+            ps.setString(index++, address.getOther_village());
+            ps.setString(index++, address.getPin_code());
+            ps.setString(index++, address.getPost_office());
+            ps.setString(index++, address.getRevenue_village_name());
+            ps.setString(index++, address.getVillage_head_name());
+            ps.setString(index++, address.getVillage_head_phone_no());
+
+            ps.setString(index++, address.getFk_address_type_code());
+            ps.setString(index++, address.getFk_country_code());
+            ps.setString(index++, "");
+            ps.setString(index++, address.getFk_district_code());
+            ps.setString(index++, address.getFk_state_code());
+            ps.setString(index++, address.getFk_suspect_district_code());
+            ps.setString(index++, "");
+            ps.setString(index++, address.getFk_suspect_state_code());
+            ps.setString(index++, address.getFk_suspect_thana_code());
+            ps.setString(index++, address.getFk_thana_code());
+            ps.setString(index++, address.getFk_village_code());
+
+            // IS READY FOR SYNC & SYNC STATUS
+            ps.setString(index++, "N");
+            ps.setString(index++, "N");
+
+            System.out.println(ps);
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean updateOrSaveAddress(SuspectAddress suspectAddress) {
+        Connection conn = null;
+        boolean isAlreadySaved = false;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        if (null != suspectAddress.getAddress_id()) {
+            try {
+                int index = 1;
+                ps = conn.prepareStatement("SELECT * FROM trans_suspect_address WHERE address_id = ?");
+                ps.setString(index, suspectAddress.getAddress_id());
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    isAlreadySaved = true;
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception : " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) {
+                        rs.close();
+                    }
+                } catch (SQLException e) {
+
+                }
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e) {
+
+                }
+                try {
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+        if (isAlreadySaved) {
+            return updateAddress(suspectAddress);
+        } else {
+            return saveSuspectAddress(suspectAddress);
+        }
+    }
+
+    public static List<SuspectAddress> getSuspectAddressList(String suspectId) {
+        List<SuspectAddress> suspectAddress = new ArrayList<>();
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return suspectAddress;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("SELECT * FROM trans_suspect_address WHERE fk_suspect_id = ?");
+            ps.setString(index, suspectId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SuspectAddress address = new SuspectAddress();
+                address.setAddress_id(rs.getString("address_id"));
+                address.setFk_suspect_id(rs.getString("fk_suspect_id"));
+                address.setCreated_by(rs.getString("created_by"));
+                address.setUpdated_by(rs.getString("updated_by"));
+                address.setCaptured_at(rs.getString("captured_at"));
+                address.setCaptured_by(rs.getString("captured_by"));
+                address.setDevice_id(rs.getString("device_id"));
+                address.setHouse_no(rs.getString("house_no"));
+                address.setHouse_owner_name(rs.getString("house_owner_name"));
+                address.setHouse_owner_phone_no(rs.getString("house_owner_phone_no"));
+                address.setIp_address(rs.getString("ip_address"));
+                address.setLatitude(rs.getString("latitude"));
+                address.setLongitude(rs.getString("longitude"));
+                address.setOther_country(rs.getString("other_country"));
+                address.setOther_district(rs.getString("other_district"));
+                address.setOther_state(rs.getString("other_state"));
+                address.setOther_thana(rs.getString("other_thana"));
+                address.setOther_village(rs.getString("other_village"));
+                address.setPin_code(rs.getString("pin_code"));
+                address.setPost_office(rs.getString("post_office"));
+                address.setRevenue_village_name(rs.getString("revenue_village_name"));
+                address.setVillage_head_name(rs.getString("village_head_name"));
+                address.setVillage_head_phone_no(rs.getString("village_head_phone_no"));
+                address.setFk_address_type_code(rs.getString("fk_address_type_code"));
+                address.setFk_country_code(rs.getString("fk_country_code"));
+                address.setFk_current_status_code(rs.getString("fk_current_status_code"));
+                address.setFk_district_code(rs.getString("fk_district_code"));
+                address.setFk_state_code(rs.getString("fk_state_code"));
+                address.setFk_suspect_district_code(rs.getString("fk_suspect_district_code"));
+                address.setFk_suspect_ft_code(rs.getString("fk_suspect_ft_code"));
+                address.setFk_suspect_state_code(rs.getString("fk_suspect_state_code"));
+                address.setFk_suspect_thana_code(rs.getString("fk_suspect_thana_code"));
+                address.setFk_thana_code(rs.getString("fk_thana_code"));
+                address.setFk_village_code(rs.getString("fk_village_code"));
+                address.setIs_ready_for_sync(rs.getString("is_ready_for_sync"));
+                address.setSync_status(rs.getString("sync_status"));
+                suspectAddress.add(address);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            return suspectAddress;
+        }
     }
 }

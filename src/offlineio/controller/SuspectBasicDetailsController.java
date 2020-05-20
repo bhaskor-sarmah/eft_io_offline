@@ -34,6 +34,7 @@ import offlineio.payload.response.KeyValuePair;
 import offlineio.repository.MasterDao;
 import offlineio.repository.SuspectRepository;
 import offlineio.util.StaticAppData;
+import offlineio.util.Utility;
 import offlineio.util.Validations;
 
 /**
@@ -424,6 +425,7 @@ public class SuspectBasicDetailsController implements Initializable {
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 SuspectBasicDetails suspect = mapInputToModel();
+                suspect.setFinal_save_basic("Y");
                 if (saveData(suspect)) {
                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                     alert1.setTitle("Success");
@@ -453,6 +455,7 @@ public class SuspectBasicDetailsController implements Initializable {
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
             SuspectBasicDetails suspect = mapInputToModel();
+            suspect.setFinal_save_basic("N");
             if (saveData(suspect)) {
                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                 alert1.setTitle("Success");
@@ -473,22 +476,6 @@ public class SuspectBasicDetailsController implements Initializable {
                 alert1.showAndWait();
             }
         }
-    }
-
-    public boolean saveData(SuspectBasicDetails suspect) {
-        return SuspectRepository.updateSuspect(suspect);
-    }
-
-    public LocalDate LOCAL_DATE(String dateString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate localDate = LocalDate.parse(dateString, formatter);
-        return localDate;
-    }
-
-    public LocalDate REVERSE_LOCAL_DATE(String dateString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(dateString, formatter);
-        return localDate;
     }
 
     public void removeAllErrorClass() {
@@ -615,7 +602,7 @@ public class SuspectBasicDetailsController implements Initializable {
             txtAge.setDisable(true);
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-mm-dd");
             try {
-                txtDob.setValue(REVERSE_LOCAL_DATE(suspect.getDate_of_birth()));
+                txtDob.setValue(Utility.REVERSE_LOCAL_DATE(suspect.getDate_of_birth()));
             } catch (Exception e) {
                 System.out.println("Exception : " + e.getMessage());
             }
@@ -1025,6 +1012,10 @@ public class SuspectBasicDetailsController implements Initializable {
         suspect.setWitness2(txtWitness2.getText());
 
         return suspect;
+    }
+
+    public boolean saveData(SuspectBasicDetails suspect) {
+        return SuspectRepository.updateSuspect(suspect);
     }
 
 }

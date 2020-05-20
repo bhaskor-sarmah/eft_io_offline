@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="660.0" prefWidth="686.0" style="-fx-background-color: #3364FF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="offlineio.controller.NewSuspectController">
+   <stylesheets>
+      <URL value="@/offlineio/style/newsuspect.css" />
+   </stylesheets>
+   <children>
+      <AnchorPane fx:id="mainAnchorPane" layoutY="65.0" prefHeight="596.0" prefWidth="686.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ScrollPane fx:id="scrollPane" layoutY="68.0" prefHeight="528.0" prefWidth="686.0" style="-fx-background-color: #DCDCDC; -fx-padding: 5;">
+               <content>
+                  <AnchorPane prefHeight="169.0" prefWidth="677.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <AnchorPane layoutX="1.0" layoutY="2.0" prefHeight="37.0" prefWidth="674.0" style="-fx-background-color: #595959; -fx-background-radius: 10 10 10 10; -fx-border-radius: 10 10 10 10;">
+                           <children>
+                              <Label fx:id="lblDocNo1" alignment="CENTER" layoutY="8.0" prefHeight="20.0" prefWidth="674.0" text="Document No - 1" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label layoutX="349.0" layoutY="56.0" prefHeight="25.0" prefWidth="140.0" text="Upload Document :" textFill="#3364ff" wrapText="true">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fileChooseDoc1" layoutX="494.0" layoutY="56.0" prefHeight="25.0" prefWidth="169.0" />
+                        <Label layoutX="14.0" layoutY="56.0" prefHeight="25.0" prefWidth="122.0" text="Document Type :" textFill="#3364ff" wrapText="true">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="96.0" prefHeight="25.0" prefWidth="163.0" text="Document Remarks :" textFill="#3364ff" wrapText="true">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtAreaDocRemarks1" layoutX="166.0" layoutY="96.0" prefHeight="59.0" prefWidth="497.0" />
+                        <Button layoutX="143.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#onAddDocClick" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: #38BFF0;" text="Browse File" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+               </content>
+            </ScrollPane>
+            <Button layoutX="23.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#onAddDocClick" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #3364FF;" text="Add Document" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="206.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#onRemoveDocClick" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: #FF0404;" text="Remove Last Document" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="465.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#onSaveDocClick" prefHeight="37.0" prefWidth="163.0" style="-fx-background-color: #3AF1CE;" text="Save Document Details" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="46.0" layoutY="19.0" text="Suspect Document Upload" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="52.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0" onMouseClicked="#onBackClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/less_than.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="584.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#onLogoutClick" style="-fx-background-color: #ffffff;" text="Logout">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
