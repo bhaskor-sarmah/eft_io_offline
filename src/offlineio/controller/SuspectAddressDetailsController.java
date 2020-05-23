@@ -685,7 +685,7 @@ public class SuspectAddressDetailsController implements Initializable {
                 if (saveData(suspect, suspectAddressList)) {
                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                     alert1.setTitle("Success");
-                    alert1.setHeaderText("Suspect data saved successfully!");
+                    alert1.setHeaderText("Addrss data saved successfully!");
                     alert1.showAndWait();
                     try {
                         ScreenController screenController = new ScreenController();
@@ -698,7 +698,7 @@ public class SuspectAddressDetailsController implements Initializable {
                 } else {
                     Alert alert1 = new Alert(Alert.AlertType.ERROR);
                     alert1.setTitle("error");
-                    alert1.setHeaderText("Failed saving suspect data");
+                    alert1.setHeaderText("Failed saving address data");
                     alert1.showAndWait();
                 }
             }
@@ -718,7 +718,7 @@ public class SuspectAddressDetailsController implements Initializable {
                 if (saveData(suspect, suspectAddressList)) {
                     Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
                     alert1.setTitle("Success");
-                    alert1.setHeaderText("Suspect Draft data saved successfully!");
+                    alert1.setHeaderText("Address Draft data saved successfully!");
                     alert1.showAndWait();
                     try {
                         ScreenController screenController = new ScreenController();
@@ -731,7 +731,7 @@ public class SuspectAddressDetailsController implements Initializable {
                 } else {
                     Alert alert1 = new Alert(Alert.AlertType.ERROR);
                     alert1.setTitle("error");
-                    alert1.setHeaderText("Failed saving suspect draft data");
+                    alert1.setHeaderText("Failed saving address draft data");
                     alert1.showAndWait();
                 }
             }

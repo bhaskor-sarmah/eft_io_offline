@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import offlineio.models.SuspectAddress;
 import offlineio.models.SuspectBasicDetails;
+import offlineio.models.SuspectFamily;
 import offlineio.util.MySQLConnection;
 
 /**
@@ -1145,7 +1146,389 @@ public class SuspectRepository {
             } catch (SQLException e) {
 
             }
-            return suspectAddress;
+        }
+        return suspectAddress;
+    }
+
+    public static boolean updateOrSaveFamily(SuspectFamily member) {
+        Connection conn = null;
+        boolean isAlreadySaved = false;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("SELECT * FROM trans_suspect_family WHERE member_id = ?");
+            ps.setString(index, member.getMember_id());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                isAlreadySaved = true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        if (isAlreadySaved) {
+            return updateFamily(member);
+        } else {
+            return saveSuspectFamily(member);
         }
     }
+
+    public static List<SuspectFamily> getSuspectFamilyList(String modifySuspectId) {
+        List<SuspectFamily> suspectFamily = new ArrayList<>();
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return suspectFamily;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("SELECT * FROM trans_suspect_family WHERE fk_suspect_id = ?");
+            ps.setString(index, modifySuspectId);
+            System.out.println(ps);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SuspectFamily family = new SuspectFamily();
+                family.setMember_id(rs.getString("member_id"));
+                family.setFk_suspect_id(rs.getString("fk_suspect_id"));
+                family.setCreated_at(rs.getString("created_at"));
+                family.setUpdated_at(rs.getString("updated_at"));
+                family.setUpdated_by(rs.getString("updated_by"));
+                family.setAge(rs.getString("age"));
+                family.setAge_on_date(rs.getString("age_on_date"));
+                family.setCaptured_at(rs.getString("captured_at"));
+                family.setCaptured_by(rs.getString("captured_by"));
+                family.setDate_of_birth(rs.getString("date_of_birth"));
+                family.setDevice_id(rs.getString("device_id"));
+                family.setIp_address(rs.getString("ip_address"));
+                family.setMember_name(rs.getString("member_name"));
+                family.setPlace_of_birth(rs.getString("place_of_birth"));
+                family.setFk_current_status_code(rs.getString("fk_current_status_code"));
+                family.setFk_gender_code(rs.getString("fk_gender_code"));
+                family.setFk_relation_code(rs.getString("fk_relation_code"));
+                family.setFk_suspect_district_code(rs.getString("fk_suspect_district_code"));
+                family.setFk_suspect_ft_code(rs.getString("fk_suspect_ft_code"));
+                family.setFk_suspect_state_code(rs.getString("fk_suspect_state_code"));
+                family.setFk_suspect_thana_code(rs.getString("fk_suspect_thana_code"));
+                family.setIs_ready_for_sync(rs.getString("is_ready_for_sync"));
+                family.setSync_status(rs.getString("sync_status"));
+                suspectFamily.add(family);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return suspectFamily;
+    }
+
+    public static boolean saveSuspectFamily(SuspectFamily member) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("INSERT INTO `trans_suspect_family` \n"
+                    + "	(`member_id`, \n"
+                    + "	`fk_suspect_id`, \n"
+                    + "	`created_at`, \n"
+                    + "	`updated_at`, \n"
+                    + "	`updated_by`, \n"
+                    + "	`age`, \n"
+                    + "	`age_on_date`, \n"
+                    + "	`captured_at`, \n"
+                    + "	`captured_by`, \n"
+                    + "	`date_of_birth`, \n"
+                    + "	`device_id`, \n"
+                    + "	`ip_address`, \n"
+                    + "	`member_name`, \n"
+                    + "	`place_of_birth`, \n"
+                    + "	`fk_current_status_code`, \n"
+                    + "	`fk_gender_code`, \n"
+                    + "	`fk_relation_code`, \n"
+                    + "	`fk_suspect_district_code`, \n"
+                    + "	`fk_suspect_ft_code`, \n"
+                    + "	`fk_suspect_state_code`, \n"
+                    + "	`fk_suspect_thana_code`, \n"
+                    + "	`is_ready_for_sync`, \n"
+                    + "	`sync_status`\n"
+                    + "	)\n"
+                    + "	VALUES\n"
+                    + "	(?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?\n"
+                    + "	)");
+            ps.setString(index++, member.getMember_id());
+            ps.setString(index++, member.getFk_suspect_id());
+            ps.setString(index++, member.getCreated_at());
+            ps.setString(index++, member.getUpdated_at());
+            ps.setString(index++, member.getUpdated_by());
+            ps.setString(index++, member.getAge());
+            ps.setString(index++, member.getAge_on_date());
+            ps.setString(index++, member.getCaptured_at());
+            ps.setString(index++, member.getCaptured_by());
+            ps.setString(index++, member.getDate_of_birth());
+            ps.setString(index++, member.getDevice_id());
+            ps.setString(index++, member.getIp_address());
+            ps.setString(index++, member.getMember_name());
+            ps.setString(index++, member.getPlace_of_birth());
+            ps.setString(index++, member.getFk_current_status_code());
+            ps.setString(index++, member.getFk_gender_code());
+            ps.setString(index++, member.getFk_relation_code());
+            ps.setString(index++, member.getFk_suspect_district_code());
+            ps.setString(index++, member.getFk_suspect_ft_code());
+            ps.setString(index++, member.getFk_suspect_state_code());
+            ps.setString(index++, member.getFk_suspect_thana_code());
+            // IS READY FOR SYNC & SYNC STATUS
+            ps.setString(index++, "N");
+            ps.setString(index++, "N");
+
+            System.out.println(ps);
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean updateFamily(SuspectFamily member) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("UPDATE `trans_suspect_family` \n"
+                    + "	SET\n"
+                    + "	`created_at` = ? , \n"
+                    + "	`updated_at` = ? , \n"
+                    + "	`updated_by` = ? , \n"
+                    + "	`age` = ? , \n"
+                    + "	`age_on_date` = ? , \n"
+                    + "	`captured_at` = ? , \n"
+                    + "	`captured_by` = ? , \n"
+                    + "	`date_of_birth` = ? , \n"
+                    + "	`device_id` = ? , \n"
+                    + "	`ip_address` = ? , \n"
+                    + "	`member_name` = ? , \n"
+                    + "	`place_of_birth` = ? , \n"
+                    + "	`fk_current_status_code` = ? , \n"
+                    + "	`fk_gender_code` = ? , \n"
+                    + "	`fk_relation_code` = ? , \n"
+                    + "	`fk_suspect_district_code` = ? , \n"
+                    + "	`fk_suspect_ft_code` = ? , \n"
+                    + "	`fk_suspect_state_code` = ? , \n"
+                    + "	`fk_suspect_thana_code` = ? , \n"
+                    + "	`is_ready_for_sync` = ? , \n"
+                    + "	`sync_status` = ?\n"
+                    + "	\n"
+                    + "	WHERE\n"
+                    + "	`member_id` = ?");
+            ps.setString(index++, member.getCreated_at());
+            ps.setString(index++, member.getUpdated_at());
+            ps.setString(index++, member.getUpdated_by());
+            ps.setString(index++, member.getAge());
+            ps.setString(index++, member.getAge_on_date());
+            ps.setString(index++, member.getCaptured_at());
+            ps.setString(index++, member.getCaptured_by());
+            ps.setString(index++, member.getDate_of_birth());
+            ps.setString(index++, member.getDevice_id());
+            ps.setString(index++, member.getIp_address());
+            ps.setString(index++, member.getMember_name());
+            ps.setString(index++, member.getPlace_of_birth());
+            ps.setString(index++, member.getFk_current_status_code());
+            ps.setString(index++, member.getFk_gender_code());
+            ps.setString(index++, member.getFk_relation_code());
+            ps.setString(index++, member.getFk_suspect_district_code());
+            ps.setString(index++, member.getFk_suspect_ft_code());
+            ps.setString(index++, member.getFk_suspect_state_code());
+            ps.setString(index++, member.getFk_suspect_thana_code());
+            // IS READY FOR SYNC & SYNC STATUS
+            ps.setString(index++, "N");
+            ps.setString(index++, "N");
+            ps.setString(index++, member.getMember_id());
+
+            System.out.println(ps);
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return false;
+    }
+
+    public static void removeMember(String memId) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return;
+        }
+
+        PreparedStatement ps = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("DELETE FROM `trans_suspect_family` WHERE member_id = ?");
+            ps.setString(index, memId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+    }
+
 }

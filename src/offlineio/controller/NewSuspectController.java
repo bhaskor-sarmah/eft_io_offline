@@ -39,11 +39,18 @@ import offlineio.util.Validations;
  */
 public class NewSuspectController implements Initializable {
 
+    @FXML
     private TextField txtFirstName;
+    @FXML
     private TextField txtMiddleName;
+    @FXML
     private TextField txtLastName;
+    @FXML
     private TextField txtFatherName;
+    @FXML
     private ChoiceBox<KeyValuePair> selVillage;
+    @FXML
+    private Label lblMessage;
 
     /**
      * Initializes the controller class.
@@ -61,8 +68,6 @@ public class NewSuspectController implements Initializable {
                 });
             }
         });
-//        lblMessage.setText("");
-//        lblMessage.setVisible(false);
     }
 
     @FXML

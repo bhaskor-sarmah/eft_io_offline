@@ -49,29 +49,29 @@ public class OfflineIO extends Application {
         screenController.addScreen("suspectSync", getClass().getResource("fxml/SuspectSync.fxml"));
         screenController.addScreen("masterVersion", getClass().getResource("fxml/ViewMaster.fxml"));
 
-        stage.setTitle("Offline IO Application");
-        stage.setScene(new Scene(screenController.activate("suspectAddMember")));
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
-        stage.setResizable(false);
-        stage.show();
+//        stage.setTitle("Offline IO Application");
+//        stage.setScene(new Scene(screenController.activate("suspectDocument")));
+//        stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
+//        stage.setResizable(false);
+//        stage.show();
 
 
-//        boolean pin_found = LoginDao.checkIfPinPresent();
-//
-//        if (pin_found) {
-//            stage.setTitle("Offline IO Application");
-//            StaticAppData.setNextWindow("home");
-//            stage.setScene(new Scene(screenController.activate("passcode")));
-//            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
-//            stage.setResizable(false);
-//            stage.show();
-//        } else {
-//            stage.setTitle("Offline IO Application");
-//            StaticAppData.setNextWindow("masterData");
-//            stage.setScene(new Scene(screenController.activate("login")));
-//            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
-//            stage.setResizable(false);
-//            stage.show();
-//        }
+        boolean pin_found = LoginDao.checkIfPinPresent();
+
+        if (pin_found) {
+            stage.setTitle("Offline IO Application");
+            StaticAppData.setNextWindow("home");
+            stage.setScene(new Scene(screenController.activate("passcode")));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
+            stage.setResizable(false);
+            stage.show();
+        } else {
+            stage.setTitle("Offline IO Application");
+            StaticAppData.setNextWindow("masterData");
+            stage.setScene(new Scene(screenController.activate("login")));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("resources/eft_logo.png")));
+            stage.setResizable(false);
+            stage.show();
+        }
     }
 }
