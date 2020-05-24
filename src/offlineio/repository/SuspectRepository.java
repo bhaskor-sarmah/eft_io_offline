@@ -5,6 +5,10 @@
  */
 package offlineio.repository;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,8 +20,11 @@ import java.util.List;
 import java.util.Locale;
 import offlineio.models.SuspectAddress;
 import offlineio.models.SuspectBasicDetails;
+import offlineio.models.SuspectDocument;
 import offlineio.models.SuspectFamily;
+import offlineio.util.AppSettings;
 import offlineio.util.MySQLConnection;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -1150,6 +1157,7 @@ public class SuspectRepository {
         return suspectAddress;
     }
 
+    // FAMILY DETAILS
     public static boolean updateOrSaveFamily(SuspectFamily member) {
         Connection conn = null;
         boolean isAlreadySaved = false;
@@ -1529,6 +1537,443 @@ public class SuspectRepository {
 
             }
         }
+    }
+
+    // DOCUMENT DETAILS
+    public static boolean updateOrSaveDocument(SuspectDocument doc) {
+        String filePath = saveOrReplaceDocuement(doc);
+        if (filePath == null) {
+            return false;
+        }
+        Connection conn = null;
+        boolean isAlreadySaved = false;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+        doc.setDoc_path(filePath);
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("SELECT * FROM trans_suspect_document WHERE doc_id = ?");
+            ps.setString(index, doc.getDoc_id());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                isAlreadySaved = true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        if (isAlreadySaved) {
+            return updateDoc(doc);
+        } else {
+            return saveSuspectDoc(doc);
+        }
+    }
+
+    public static List<SuspectDocument> getSuspectDocList(String modifySuspectId) {
+        List<SuspectDocument> suspectDoc = new ArrayList<>();
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return suspectDoc;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("SELECT * FROM trans_suspect_document WHERE fk_suspect_id = ?");
+            ps.setString(index, modifySuspectId);
+            System.out.println(ps);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                SuspectDocument doc = new SuspectDocument();
+                doc.setDoc_id(rs.getString("doc_id"));
+                doc.setCreated_at(rs.getString("created_at"));
+                doc.setCreated_by(rs.getString("created_by"));
+                doc.setUpdated_at(rs.getString("updated_at"));
+                doc.setUpdated_by(rs.getString("updated_by"));
+                doc.setComm_id(rs.getString("comm_id"));
+                doc.setDoc_details(rs.getString("doc_details"));
+                doc.setDoc_path(rs.getString("doc_path"));
+                doc.setOther_document(rs.getString("other_document"));
+                doc.setFk_current_status_code(rs.getString("fk_current_status_code"));
+                doc.setFk_doc_code(rs.getString("fk_doc_code"));
+                doc.setFk_suspect_id(rs.getString("fk_suspect_id"));
+                doc.setFk_suspect_district_code(rs.getString("fk_suspect_district_code"));
+                doc.setFk_suspect_ft_code(rs.getString("fk_suspect_ft_code"));
+                doc.setFk_suspect_state_code(rs.getString("fk_suspect_state_code"));
+                doc.setFk_suspect_thana_code(rs.getString("fk_suspect_thana_code"));
+                doc.setIs_ready_for_sync(rs.getString("is_ready_for_sync"));
+                doc.setSync_status(rs.getString("sync_status"));
+                doc.setOnline_id(rs.getString("online_id"));
+                doc.setParent_sync(rs.getString("parent_sync"));
+                suspectDoc.add(doc);
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return suspectDoc;
+    }
+
+    public static boolean saveSuspectDoc(SuspectDocument doc) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("INSERT INTO `trans_suspect_document` \n"
+                    + "	(`doc_id`, \n"
+                    + "	`created_at`, \n"
+                    + "	`created_by`, \n"
+                    + "	`updated_at`, \n"
+                    + "	`updated_by`, \n"
+                    + "	`comm_id`, \n"
+                    + "	`doc_details`, \n"
+                    + "	`doc_path`, \n"
+                    + "	`other_document`, \n"
+                    + "	`fk_current_status_code`, \n"
+                    + "	`fk_doc_code`, \n"
+                    + "	`fk_suspect_id`, \n"
+                    + "	`fk_suspect_district_code`, \n"
+                    + "	`fk_suspect_ft_code`, \n"
+                    + "	`fk_suspect_state_code`, \n"
+                    + "	`fk_suspect_thana_code`, \n"
+                    + "	`online_id`, \n"
+                    + "	`parent_sync`,\n"
+                    + "	`is_ready_for_sync`, \n"
+                    + "	`sync_status` \n"
+                    + "	)\n"
+                    + "	VALUES\n"
+                    + "	(?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?, \n"
+                    + "	?,\n"
+                    + "	?, \n"
+                    + "	? \n"
+                    + "	)");
+            // IS READY FOR SYNC & SYNC STATUS
+            ps.setString(index++, doc.getDoc_id());
+            ps.setString(index++, doc.getCreated_at());
+            ps.setString(index++, doc.getCreated_by());
+            ps.setString(index++, doc.getUpdated_at());
+            ps.setString(index++, doc.getUpdated_by());
+            ps.setString(index++, doc.getComm_id());
+            ps.setString(index++, doc.getDoc_details());
+            ps.setString(index++, doc.getDoc_path());
+            ps.setString(index++, doc.getOther_document());
+            ps.setString(index++, doc.getFk_current_status_code());
+            ps.setString(index++, doc.getFk_doc_code());
+            ps.setString(index++, doc.getFk_suspect_id());
+            ps.setString(index++, doc.getFk_suspect_district_code());
+            ps.setString(index++, doc.getFk_suspect_ft_code());
+            ps.setString(index++, doc.getFk_suspect_state_code());
+            ps.setString(index++, doc.getFk_suspect_thana_code());
+            ps.setString(index++, doc.getOnline_id());
+            ps.setString(index++, doc.getParent_sync());
+            ps.setString(index++, "N");
+            ps.setString(index++, "N");
+
+            System.out.println(ps);
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean updateDoc(SuspectDocument doc) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return false;
+        }
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("UPDATE `trans_suspect_document` \n"
+                    + "	SET\n"
+                    + "	`created_at` = ? , \n"
+                    + "	`created_by` = ? , \n"
+                    + "	`updated_at` = ? , \n"
+                    + "	`updated_by` = ? , \n"
+                    + "	`comm_id` = ? , \n"
+                    + "	`doc_details` = ? , \n"
+                    + "	`doc_path` = ? , \n"
+                    + "	`other_document` = ? , \n"
+                    + "	`fk_current_status_code` = ? , \n"
+                    + "	`fk_doc_code` = ? , \n"
+                    + "	`fk_suspect_id` = ? , \n"
+                    + "	`fk_suspect_district_code` = ? , \n"
+                    + "	`fk_suspect_ft_code` = ? , \n"
+                    + "	`fk_suspect_state_code` = ? , \n"
+                    + "	`fk_suspect_thana_code` = ? , \n"
+                    + "	`online_id` = ? , \n"
+                    + "	`parent_sync` = ? ,\n"
+                    + "	`is_ready_for_sync` = ? , \n"
+                    + "	`sync_status` = ? \n"
+                    + "	\n"
+                    + "	WHERE\n"
+                    + "	`doc_id` = ?");
+            ps.setString(index++, doc.getCreated_at());
+            ps.setString(index++, doc.getCreated_by());
+            ps.setString(index++, doc.getUpdated_at());
+            ps.setString(index++, doc.getUpdated_by());
+            ps.setString(index++, doc.getComm_id());
+            ps.setString(index++, doc.getDoc_details());
+            ps.setString(index++, doc.getDoc_path());
+            ps.setString(index++, doc.getOther_document());
+            ps.setString(index++, doc.getFk_current_status_code());
+            ps.setString(index++, doc.getFk_doc_code());
+            ps.setString(index++, doc.getFk_suspect_id());
+            ps.setString(index++, doc.getFk_suspect_district_code());
+            ps.setString(index++, doc.getFk_suspect_ft_code());
+            ps.setString(index++, doc.getFk_suspect_state_code());
+            ps.setString(index++, doc.getFk_suspect_thana_code());
+            ps.setString(index++, doc.getOnline_id());
+            ps.setString(index++, doc.getParent_sync());
+            ps.setString(index++, "N");
+            ps.setString(index++, "N");
+            ps.setString(index++, doc.getDoc_id());
+            System.out.println(ps);
+            int i = ps.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+        return false;
+    }
+
+    public static void removeDoc(String docId) {
+        Connection conn = null;
+        MySQLConnection msconn = new MySQLConnection();
+        try {
+            conn = msconn.getMySQLConnection();
+        } catch (Exception e) {
+            System.out.println("Exception : " + e.getMessage());
+            return;
+        }
+
+        PreparedStatement ps = null, ps1 = null;
+        ResultSet rs = null;
+        try {
+            int index = 1;
+            ps1 = conn.prepareStatement("SELECT doc_path FROM `trans_suspect_document` WHERE doc_id = ?");
+            ps1.setString(index, docId);
+            rs = ps1.executeQuery();
+            if (rs.next()) {
+                File file = new File(rs.getString(1));
+                if (file != null && file.exists()) {
+                    file.delete();
+                    System.out.println("File Deleted - "+rs.getString(1));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (ps1 != null) {
+                    ps1.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+
+        try {
+            int index = 1;
+            ps = conn.prepareStatement("DELETE FROM `trans_suspect_document` WHERE doc_id = ?");
+            ps.setString(index, docId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Exception : " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
+    }
+
+    private static String saveOrReplaceDocuement(SuspectDocument doc) {
+        try {
+            String path = AppSettings.DOC_SAVING_PATH;
+            String suspectId = doc.getFk_suspect_id();
+            String folderPath = path + suspectId + "//" + doc.getDoc_id() + "//";
+            File folder = new File(folderPath);
+            FileUtils.forceMkdir(folder);
+            String extention = getFileExtension(doc.getDoc());
+            File saveFile = new File(folder.getAbsolutePath() + "//" + doc.getDoc_id() + extention);
+//            System.out.println(folder.getAbsolutePath());
+//            System.out.println(saveFile.toPath());
+            if (saveFile.exists()) {
+                saveFile.delete();
+            }
+            return Files.copy(doc.getDoc().toPath(), saveFile.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING).toString();
+        } catch (IOException e) {
+            System.out.println("Exception : " + e.getMessage());
+        }
+        return null;
+    }
+
+    private static String getFileExtension(File file) {
+        String extension = "";
+        try {
+            if (file != null && file.exists()) {
+                String name = file.getName();
+                extension = name.substring(name.lastIndexOf("."));
+            }
+        } catch (Exception e) {
+            extension = "";
+        }
+
+        return extension;
+
     }
 
 }

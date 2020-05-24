@@ -49,7 +49,7 @@ public class AppSettings {
     // # OTHER COUNTRY, STATE, DISTRICT CODES
     // ========================================================================
     public static final String OTHER_THEN_LISTED_COUNTRY = "00";
-    
+
     public static final String OTHER_THEN_LISTED_STATE_IN_INDIA = "99";
     public static final String OTHER_THEN_LISTED_STATE_OUTSIDE_INDIA = "00";
 
@@ -62,4 +62,9 @@ public class AppSettings {
     public static final String OTHER_THEN_LISTED_VILLAGE_IN_INDIA = "999999";
     public static final String OTHER_THEN_LISTED_VILLAGE_OUT_SIDE_INDIA = "000000";
 
+    // ========================================================================
+    // # Document saving path
+    // ========================================================================
+    public static final String DOC_SAVING_PATH = "E:\\OFFLINE_IO_DOC\\";
+    
 }
